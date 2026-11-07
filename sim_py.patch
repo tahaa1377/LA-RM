@@ -1,0 +1,109 @@
+diff --git a/larm/sim.py b/larm/sim.py
+index af50e00..442c9ec 100644
+--- a/larm/sim.py
++++ b/larm/sim.py
+@@ -33,6 +33,19 @@ class Policy:
+     ECMP = "ecmp"      # equal-cost multipath, hashed per flow
+     URM = "urm"        # uniform route mutation (MTD without learning)
+     LARM = "larm"      # learning-automata route mutation (this work)
++    # Baselines added in revision. They use the same candidate paths and the same
++    # occupancy signal as LA-RM, but no learning:
++    GREEDY = "greedy"  # occupancy-aware routing in the style of STAR/DIFF: each new flow
++                       # takes the candidate with the best score 1 - max occupancy
++                       # - beta*(stretch-1) on the *current* tables (no full switch if
++                       # possible); deterministic up to random tie-breaking
++    SPR = "sp_retry"   # shortest path with retry: if the shortest path crosses a full
++                       # switch, take the cheapest candidate that does not
++    LARMR = "larm_retry"  # LA-RM with retry: a draw that crosses a full switch is
++                          # credited 0 and the flow is re-drawn among the candidates
++                          # that avoid full switches (from the mixed vector)
++
++    LEARNING = ("larm", "larm_retry")
+ 
+ 
+ class Sim:
+@@ -77,7 +90,7 @@ class Sim:
+         # learning automaton per OD pair (LARM only)
+         la_kw = la_kw or {}
+         self.auto = {}
+-        if policy == Policy.LARM:
++        if policy in Policy.LEARNING:
+             for od in self.ods:
+                 r = len(self.pt.cand[od])
+                 self.auto[od] = PathAutomaton(r, rng=self.rng_route, **la_kw)
+@@ -122,6 +135,45 @@ class Sim:
+         if self.policy == Policy.LARM:
+             i = self.auto[od].choose()
+             return i, cands[i]
++        if self.policy == Policy.GREEDY:
++            # score every candidate on the current tables; a candidate crossing a
++            # full switch is never preferred to one that does not
++            best, bi = None, []
++            for i, p in enumerate(cands):
++                if self._full(p):
++                    sc = -1e9
++                else:
++                    hot = max(len(self.table[n]) / self.cap[n] for n in p)
++                    sc = 1.0 - hot - self.stretch_pen * (self.pt.stretch(od, p) - 1.0)
++                if best is None or sc > best + 1e-12:
++                    best, bi = sc, [i]
++                elif abs(sc - best) <= 1e-12:
++                    bi.append(i)
++            i = bi[int(self.rng_route.integers(len(bi)))] if len(bi) > 1 else bi[0]
++            return i, cands[i]
++        if self.policy == Policy.SPR:
++            if not self._full(self.sp_path[od]):
++                return 0, self.sp_path[od]
++            for i, p in enumerate(cands):      # candidates are in order of cost
++                if not self._full(p):
++                    return i, p
++            return 0, self.sp_path[od]
++        if self.policy == Policy.LARMR:
++            a = self.auto[od]
++            i = a.choose()
++            if not self._full(cands[i]):
++                return i, cands[i]
++            self._retry_fail = (i, cands[i])   # credited 0 at the end of the epoch
++            ok = [j for j in range(len(cands)) if j != i and not self._full(cands[j])]
++            if not ok:
++                return i, cands[i]
++            pe = a.p_eff()[ok]
++            pe = pe / pe.sum()
++            j = ok[int(self.rng_route.choice(len(ok), p=pe))]
++            return j, cands[j]
++
++    def _full(self, path):
++        return any(len(self.table[n]) >= self.cap[n] for n in path)
+ 
+     def _install(self, path, expiry, benign=True, count=True):
+         """Try to install one rule per switch on path; fail if any switch full.
+@@ -310,7 +362,11 @@ class Sim:
+                 nnew = int(self.rng.poisson(self.lam[od] * dt))
+                 for _ in range(nnew):
+                     dur = float(self.rng.lognormal(np.log(self.dur_median), self.dur_sigma))
++                    self._retry_fail = None
+                     i, path = self._choose_path(od)
++                    if self._retry_fail is not None and self.policy in Policy.LEARNING:
++                        # the first draw met a full switch: it earns 0, like a block
++                        pend.setdefault(od, []).append((self._retry_fail[0], self._retry_fail[1], False))
+                     for n in path:
+                         self._dem[n] += 1
+                     ok = self._install(path, t + dur + self.idle, benign=True, count=measuring)
+@@ -322,7 +378,7 @@ class Sim:
+                         st = self.pt.stretch(od, path)
+                         self.m["stretch_sum"] += st
+                         self.m["stretch_n"] += 1
+-                    if self.policy == Policy.LARM:
++                    if self.policy in Policy.LEARNING:
+                         pend.setdefault(od, []).append((i, path, ok))
+             if measuring and not self.atk_first:
+                 self._adversary_refresh(t)
+@@ -337,7 +393,7 @@ class Sim:
+             # 5. learning: reward is path-local so paths are distinguishable.
+             # A blocked flow earns 0; an admitted one earns
+             # 1 - (busiest switch on its path) - stretch penalty.
+-            if self.policy == Policy.LARM:
++            if self.policy in Policy.LEARNING:
+                 load = {n: len(self.table[n]) / self.cap[n] for n in self.nodes}
+                 for od, choices in pend.items():
+                     for i, path, ok in choices:
