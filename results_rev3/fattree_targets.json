@@ -1,0 +1,987 @@
+{
+ "sp": {
+  "runs": [
+   {
+    "seed": 0,
+    "admission": 0.5576,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.36116910229645094,
+    "first_window_busiest_edge": 0.2860125260960334
+   },
+   {
+    "seed": 1,
+    "admission": 0.7074,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.3226452905811623,
+    "first_window_busiest_edge": 0.280561122244489
+   },
+   {
+    "seed": 2,
+    "admission": 0.6459,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.34012219959266804,
+    "first_window_busiest_edge": 0.26883910386965376
+   },
+   {
+    "seed": 3,
+    "admission": 0.5965,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.35772357723577236,
+    "first_window_busiest_edge": 0.28252032520325204
+   },
+   {
+    "seed": 4,
+    "admission": 0.613,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.4243614931237721,
+    "first_window_busiest_edge": 0.2770137524557957
+   },
+   {
+    "seed": 5,
+    "admission": 0.6067,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.31798245614035087,
+    "first_window_busiest_edge": 0.28728070175438597
+   },
+   {
+    "seed": 6,
+    "admission": 0.7396,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "edge",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.30409356725146197,
+    "first_window_busiest_edge": 0.2729044834307992
+   },
+   {
+    "seed": 7,
+    "admission": 0.6358,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.33473684210526317,
+    "first_window_busiest_edge": 0.27789473684210525
+   },
+   {
+    "seed": 8,
+    "admission": 0.5412,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.4274028629856851,
+    "first_window_busiest_edge": 0.2822085889570552
+   },
+   {
+    "seed": 9,
+    "admission": 0.6367,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.2935222672064777,
+    "first_window_busiest_edge": 0.2773279352226721
+   }
+  ],
+  "edge_share_of_attack": [
+   0.0111,
+   0.0251
+  ],
+  "first_window_busiest_transit": [
+   0.3484,
+   0.0329
+  ],
+  "first_window_busiest_edge": [
+   0.2793,
+   0.0041
+  ],
+  "first_decision_edge": 0.0
+ },
+ "larm": {
+  "runs": [
+   {
+    "seed": 0,
+    "admission": 0.752,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.30062630480167013,
+    "first_window_busiest_edge": 0.2860125260960334
+   },
+   {
+    "seed": 1,
+    "admission": 0.801,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.2985971943887776,
+    "first_window_busiest_edge": 0.280561122244489
+   },
+   {
+    "seed": 2,
+    "admission": 0.7992,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.28105906313645623,
+    "first_window_busiest_edge": 0.26883910386965376
+   },
+   {
+    "seed": 3,
+    "admission": 0.7731,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "edge",
+     "edge",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.2222222222222222,
+    "first_window_busiest_transit": 0.2926829268292683,
+    "first_window_busiest_edge": 0.28252032520325204
+   },
+   {
+    "seed": 4,
+    "admission": 0.7474,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.29862475442043224,
+    "first_window_busiest_edge": 0.2770137524557957
+   },
+   {
+    "seed": 5,
+    "admission": 0.869,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.27850877192982454,
+    "first_window_busiest_edge": 0.28728070175438597
+   },
+   {
+    "seed": 6,
+    "admission": 0.7499,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.290448343079922,
+    "first_window_busiest_edge": 0.2729044834307992
+   },
+   {
+    "seed": 7,
+    "admission": 0.7554,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.28,
+    "first_window_busiest_edge": 0.27789473684210525
+   },
+   {
+    "seed": 8,
+    "admission": 0.793,
+    "decisions": [
+     "edge",
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.2222222222222222,
+    "first_window_busiest_transit": 0.2740286298568507,
+    "first_window_busiest_edge": 0.2822085889570552
+   },
+   {
+    "seed": 9,
+    "admission": 0.7387,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.2834008097165992,
+    "first_window_busiest_edge": 0.2773279352226721
+   }
+  ],
+  "edge_share_of_attack": [
+   0.0556,
+   0.0675
+  ],
+  "first_window_busiest_transit": [
+   0.2878,
+   0.0069
+  ],
+  "first_window_busiest_edge": [
+   0.2793,
+   0.0041
+  ],
+  "first_decision_edge": 0.2
+ },
+ "greedy": {
+  "runs": [
+   {
+    "seed": 0,
+    "admission": 0.9745,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.26931106471816285,
+    "first_window_busiest_edge": 0.2860125260960334
+   },
+   {
+    "seed": 1,
+    "admission": 0.9581,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2665330661322645,
+    "first_window_busiest_edge": 0.280561122244489
+   },
+   {
+    "seed": 2,
+    "admission": 0.9672,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.26476578411405294,
+    "first_window_busiest_edge": 0.26883910386965376
+   },
+   {
+    "seed": 3,
+    "admission": 0.9679,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2804878048780488,
+    "first_window_busiest_edge": 0.28252032520325204
+   },
+   {
+    "seed": 4,
+    "admission": 0.9513,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2554027504911591,
+    "first_window_busiest_edge": 0.2770137524557957
+   },
+   {
+    "seed": 5,
+    "admission": 0.9729,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2675438596491228,
+    "first_window_busiest_edge": 0.28728070175438597
+   },
+   {
+    "seed": 6,
+    "admission": 0.9673,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2631578947368421,
+    "first_window_busiest_edge": 0.2729044834307992
+   },
+   {
+    "seed": 7,
+    "admission": 0.9631,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2694736842105263,
+    "first_window_busiest_edge": 0.27789473684210525
+   },
+   {
+    "seed": 8,
+    "admission": 0.9664,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2719836400817996,
+    "first_window_busiest_edge": 0.2822085889570552
+   },
+   {
+    "seed": 9,
+    "admission": 0.9665,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2631578947368421,
+    "first_window_busiest_edge": 0.2773279352226721
+   }
+  ],
+  "edge_share_of_attack": [
+   0.1111,
+   0.0
+  ],
+  "first_window_busiest_transit": [
+   0.2672,
+   0.0047
+  ],
+  "first_window_busiest_edge": [
+   0.2793,
+   0.0041
+  ],
+  "first_decision_edge": 1.0
+ },
+ "sp_retry": {
+  "runs": [
+   {
+    "seed": 0,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.36116910229645094,
+    "first_window_busiest_edge": 0.2860125260960334
+   },
+   {
+    "seed": 1,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.3226452905811623,
+    "first_window_busiest_edge": 0.280561122244489
+   },
+   {
+    "seed": 2,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.34012219959266804,
+    "first_window_busiest_edge": 0.26883910386965376
+   },
+   {
+    "seed": 3,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.35772357723577236,
+    "first_window_busiest_edge": 0.28252032520325204
+   },
+   {
+    "seed": 4,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.4243614931237721,
+    "first_window_busiest_edge": 0.2770137524557957
+   },
+   {
+    "seed": 5,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.31798245614035087,
+    "first_window_busiest_edge": 0.28728070175438597
+   },
+   {
+    "seed": 6,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.30409356725146197,
+    "first_window_busiest_edge": 0.2729044834307992
+   },
+   {
+    "seed": 7,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.33473684210526317,
+    "first_window_busiest_edge": 0.27789473684210525
+   },
+   {
+    "seed": 8,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.4274028629856851,
+    "first_window_busiest_edge": 0.2822085889570552
+   },
+   {
+    "seed": 9,
+    "admission": 0.9963,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "edge"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2935222672064777,
+    "first_window_busiest_edge": 0.2773279352226721
+   }
+  ],
+  "edge_share_of_attack": [
+   0.0111,
+   0.0251
+  ],
+  "first_window_busiest_transit": [
+   0.3484,
+   0.0329
+  ],
+  "first_window_busiest_edge": [
+   0.2793,
+   0.0041
+  ],
+  "first_decision_edge": 0.0
+ },
+ "larm_retry": {
+  "runs": [
+   {
+    "seed": 0,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.30062630480167013,
+    "first_window_busiest_edge": 0.2860125260960334
+   },
+   {
+    "seed": 1,
+    "admission": 0.9577,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "edge",
+     "edge",
+     "edge",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.3333333333333333,
+    "first_window_busiest_transit": 0.2985971943887776,
+    "first_window_busiest_edge": 0.280561122244489
+   },
+   {
+    "seed": 2,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.28105906313645623,
+    "first_window_busiest_edge": 0.26883910386965376
+   },
+   {
+    "seed": 3,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.2926829268292683,
+    "first_window_busiest_edge": 0.28252032520325204
+   },
+   {
+    "seed": 4,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.29862475442043224,
+    "first_window_busiest_edge": 0.2770137524557957
+   },
+   {
+    "seed": 5,
+    "admission": 0.9729,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.27850877192982454,
+    "first_window_busiest_edge": 0.28728070175438597
+   },
+   {
+    "seed": 6,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.290448343079922,
+    "first_window_busiest_edge": 0.2729044834307992
+   },
+   {
+    "seed": 7,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.28,
+    "first_window_busiest_edge": 0.27789473684210525
+   },
+   {
+    "seed": 8,
+    "admission": 0.9664,
+    "decisions": [
+     "edge",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.1111111111111111,
+    "first_window_busiest_transit": 0.2740286298568507,
+    "first_window_busiest_edge": 0.2822085889570552
+   },
+   {
+    "seed": 9,
+    "admission": 1.0,
+    "decisions": [
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit",
+     "transit"
+    ],
+    "edge_share_of_attack": 0.0,
+    "first_window_busiest_transit": 0.2834008097165992,
+    "first_window_busiest_edge": 0.2773279352226721
+   }
+  ],
+  "edge_share_of_attack": [
+   0.0556,
+   0.0772
+  ],
+  "first_window_busiest_transit": [
+   0.2878,
+   0.0069
+  ],
+  "first_window_busiest_edge": [
+   0.2793,
+   0.0041
+  ],
+  "first_decision_edge": 0.2
+ }
+}

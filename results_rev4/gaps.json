@@ -1,0 +1,2603 @@
+{
+ "policies": [
+  "sp",
+  "ecmp",
+  "urm",
+  "larm",
+  "greedy",
+  "sp_retry",
+  "larm_retry",
+  "larm2"
+ ],
+ "settings": [
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 300,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 750,
+   "admission": {
+    "sp": 99.82,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 99.9,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -0.18,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": -0.1,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "ecmp",
+    "urm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 900,
+   "admission": {
+    "sp": 81.69,
+    "ecmp": 85.63,
+    "urm": 88.42,
+    "larm": 85.21,
+    "greedy": 97.76,
+    "sp_retry": 100.0,
+    "larm_retry": 99.46,
+    "larm2": 98.19
+   },
+   "gap": {
+    "sp": -18.31,
+    "ecmp": -14.37,
+    "urm": -11.58,
+    "larm": -14.79,
+    "greedy": -2.24,
+    "sp_retry": 0.0,
+    "larm_retry": -0.54,
+    "larm2": -1.81
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1300,
+   "admission": {
+    "sp": 62.8,
+    "ecmp": 61.02,
+    "urm": 71.66,
+    "larm": 77.79,
+    "greedy": 96.55,
+    "sp_retry": 99.96,
+    "larm_retry": 98.97,
+    "larm2": 97.25
+   },
+   "gap": {
+    "sp": -37.16,
+    "ecmp": -38.94,
+    "urm": -28.3,
+    "larm": -22.17,
+    "greedy": -3.41,
+    "sp_retry": 0.0,
+    "larm_retry": -0.99,
+    "larm2": -2.71
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1800,
+   "admission": {
+    "sp": 62.23,
+    "ecmp": 60.65,
+    "urm": 68.21,
+    "larm": 73.91,
+    "greedy": 96.21,
+    "sp_retry": 98.06,
+    "larm_retry": 95.65,
+    "larm2": 95.83
+   },
+   "gap": {
+    "sp": -35.83,
+    "ecmp": -37.41,
+    "urm": -29.85,
+    "larm": -24.15,
+    "greedy": -1.85,
+    "sp_retry": 0.0,
+    "larm_retry": -2.41,
+    "larm2": -2.23
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 2500,
+   "admission": {
+    "sp": 61.67,
+    "ecmp": 59.57,
+    "urm": 64.06,
+    "larm": 64.76,
+    "greedy": 96.19,
+    "sp_retry": 97.88,
+    "larm_retry": 95.07,
+    "larm2": 95.45
+   },
+   "gap": {
+    "sp": -36.21,
+    "ecmp": -38.31,
+    "urm": -33.82,
+    "larm": -33.12,
+    "greedy": -1.69,
+    "sp_retry": 0.0,
+    "larm_retry": -2.81,
+    "larm2": -2.43
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "static",
+   "budget": 900,
+   "admission": {
+    "sp": 90.16,
+    "ecmp": 89.83,
+    "urm": 92.98,
+    "larm": 98.73,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -9.84,
+    "ecmp": -10.17,
+    "urm": -7.02,
+    "larm": -1.27,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "static",
+   "budget": 1300,
+   "admission": {
+    "sp": 72.87,
+    "ecmp": 68.52,
+    "urm": 75.3,
+    "larm": 89.65,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -27.13,
+    "ecmp": -31.48,
+    "urm": -24.7,
+    "larm": -10.35,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 900,
+   "admission": {
+    "sp": 85.84,
+    "ecmp": 85.65,
+    "urm": 86.92,
+    "larm": 91.78,
+    "greedy": 92.65,
+    "sp_retry": 92.65,
+    "larm_retry": 92.65,
+    "larm2": 92.65
+   },
+   "gap": {
+    "sp": -6.81,
+    "ecmp": -7.0,
+    "urm": -5.73,
+    "larm": -0.87,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 1300,
+   "admission": {
+    "sp": 55.86,
+    "ecmp": 54.16,
+    "urm": 57.93,
+    "larm": 70.56,
+    "greedy": 75.18,
+    "sp_retry": 75.18,
+    "larm_retry": 75.18,
+    "larm2": 75.18
+   },
+   "gap": {
+    "sp": -19.32,
+    "ecmp": -21.02,
+    "urm": -17.25,
+    "larm": -4.62,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "smart",
+   "budget": 900,
+   "admission": {
+    "sp": 97.24,
+    "ecmp": 98.7,
+    "urm": 99.24,
+    "larm": 99.39,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -2.76,
+    "ecmp": -1.3,
+    "urm": -0.76,
+    "larm": -0.61,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "fattree4",
+   "candidates": "yen",
+   "adversary": "smart",
+   "budget": 1300,
+   "admission": {
+    "sp": 93.36,
+    "ecmp": 96.08,
+    "urm": 97.47,
+    "larm": 96.43,
+    "greedy": 99.9,
+    "sp_retry": 100.0,
+    "larm_retry": 99.9,
+    "larm2": 99.9
+   },
+   "gap": {
+    "sp": -6.64,
+    "ecmp": -3.92,
+    "urm": -2.53,
+    "larm": -3.57,
+    "greedy": -0.1,
+    "sp_retry": 0.0,
+    "larm_retry": -0.1,
+    "larm2": -0.1
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 150,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 300,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 450,
+   "admission": {
+    "sp": 99.3,
+    "ecmp": 99.73,
+    "urm": 98.24,
+    "larm": 99.8,
+    "greedy": 100.0,
+    "sp_retry": 99.78,
+    "larm_retry": 99.89,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -0.7,
+    "ecmp": -0.27,
+    "urm": -1.76,
+    "larm": -0.2,
+    "greedy": 0.0,
+    "sp_retry": -0.22,
+    "larm_retry": -0.11,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 86.35,
+    "ecmp": 86.55,
+    "urm": 82.33,
+    "larm": 86.37,
+    "greedy": 98.26,
+    "sp_retry": 94.28,
+    "larm_retry": 93.04,
+    "larm2": 98.14
+   },
+   "gap": {
+    "sp": -11.91,
+    "ecmp": -11.71,
+    "urm": -15.93,
+    "larm": -11.89,
+    "greedy": 0.0,
+    "sp_retry": -3.98,
+    "larm_retry": -5.22,
+    "larm2": -0.12
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 800,
+   "admission": {
+    "sp": 63.2,
+    "ecmp": 63.11,
+    "urm": 59.41,
+    "larm": 63.38,
+    "greedy": 76.64,
+    "sp_retry": 76.9,
+    "larm_retry": 71.35,
+    "larm2": 77.35
+   },
+   "gap": {
+    "sp": -14.15,
+    "ecmp": -14.24,
+    "urm": -17.94,
+    "larm": -13.97,
+    "greedy": -0.71,
+    "sp_retry": -0.45,
+    "larm_retry": -6.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 43.09,
+    "ecmp": 42.65,
+    "urm": 39.39,
+    "larm": 43.25,
+    "greedy": 60.06,
+    "sp_retry": 59.11,
+    "larm_retry": 54.9,
+    "larm2": 64.6
+   },
+   "gap": {
+    "sp": -21.51,
+    "ecmp": -21.95,
+    "urm": -25.21,
+    "larm": -21.35,
+    "greedy": -4.54,
+    "sp_retry": -5.49,
+    "larm_retry": -9.7,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1500,
+   "admission": {
+    "sp": 43.09,
+    "ecmp": 42.65,
+    "urm": 39.39,
+    "larm": 43.25,
+    "greedy": 50.68,
+    "sp_retry": 54.46,
+    "larm_retry": 52.05,
+    "larm2": 53.7
+   },
+   "gap": {
+    "sp": -11.37,
+    "ecmp": -11.81,
+    "urm": -15.07,
+    "larm": -11.21,
+    "greedy": -3.78,
+    "sp_retry": 0.0,
+    "larm_retry": -2.41,
+    "larm2": -0.76
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 2100,
+   "admission": {
+    "sp": 43.09,
+    "ecmp": 42.65,
+    "urm": 39.39,
+    "larm": 43.25,
+    "greedy": 50.68,
+    "sp_retry": 54.31,
+    "larm_retry": 52.05,
+    "larm2": 52.93
+   },
+   "gap": {
+    "sp": -11.22,
+    "ecmp": -11.66,
+    "urm": -14.92,
+    "larm": -11.06,
+    "greedy": -3.63,
+    "sp_retry": 0.0,
+    "larm_retry": -2.26,
+    "larm2": -1.38
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "static",
+   "budget": 600,
+   "admission": {
+    "sp": 86.35,
+    "ecmp": 86.55,
+    "urm": 82.33,
+    "larm": 86.37,
+    "greedy": 99.92,
+    "sp_retry": 94.28,
+    "larm_retry": 93.11,
+    "larm2": 98.94
+   },
+   "gap": {
+    "sp": -13.57,
+    "ecmp": -13.37,
+    "urm": -17.59,
+    "larm": -13.55,
+    "greedy": 0.0,
+    "sp_retry": -5.64,
+    "larm_retry": -6.81,
+    "larm2": -0.98
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 600,
+   "admission": {
+    "sp": 95.07,
+    "ecmp": 95.34,
+    "urm": 90.5,
+    "larm": 94.07,
+    "greedy": 100.0,
+    "sp_retry": 97.25,
+    "larm_retry": 95.94,
+    "larm2": 99.71
+   },
+   "gap": {
+    "sp": -4.93,
+    "ecmp": -4.66,
+    "urm": -9.5,
+    "larm": -5.93,
+    "greedy": 0.0,
+    "sp_retry": -2.75,
+    "larm_retry": -4.06,
+    "larm2": -0.29
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 1100,
+   "admission": {
+    "sp": 49.75,
+    "ecmp": 49.92,
+    "urm": 41.82,
+    "larm": 46.8,
+    "greedy": 64.97,
+    "sp_retry": 61.73,
+    "larm_retry": 59.91,
+    "larm2": 63.24
+   },
+   "gap": {
+    "sp": -15.22,
+    "ecmp": -15.05,
+    "urm": -23.15,
+    "larm": -18.17,
+    "greedy": 0.0,
+    "sp_retry": -3.24,
+    "larm_retry": -5.06,
+    "larm2": -1.73
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "yen",
+   "adversary": "smart",
+   "budget": 600,
+   "admission": {
+    "sp": 93.27,
+    "ecmp": 93.8,
+    "urm": 90.32,
+    "larm": 92.3,
+    "greedy": 100.0,
+    "sp_retry": 97.44,
+    "larm_retry": 95.86,
+    "larm2": 99.8
+   },
+   "gap": {
+    "sp": -6.73,
+    "ecmp": -6.2,
+    "urm": -9.68,
+    "larm": -7.7,
+    "greedy": 0.0,
+    "sp_retry": -2.56,
+    "larm_retry": -4.14,
+    "larm2": -0.2
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 150,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 300,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 450,
+   "admission": {
+    "sp": 99.22,
+    "ecmp": 99.24,
+    "urm": 96.21,
+    "larm": 98.83,
+    "greedy": 100.0,
+    "sp_retry": 99.39,
+    "larm_retry": 99.08,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -0.78,
+    "ecmp": -0.76,
+    "urm": -3.79,
+    "larm": -1.17,
+    "greedy": 0.0,
+    "sp_retry": -0.61,
+    "larm_retry": -0.92,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 84.21,
+    "ecmp": 84.13,
+    "urm": 78.82,
+    "larm": 83.39,
+    "greedy": 94.91,
+    "sp_retry": 87.21,
+    "larm_retry": 86.99,
+    "larm2": 91.34
+   },
+   "gap": {
+    "sp": -10.7,
+    "ecmp": -10.78,
+    "urm": -16.09,
+    "larm": -11.52,
+    "greedy": 0.0,
+    "sp_retry": -7.7,
+    "larm_retry": -7.92,
+    "larm2": -3.57
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 800,
+   "admission": {
+    "sp": 61.2,
+    "ecmp": 61.12,
+    "urm": 56.02,
+    "larm": 60.59,
+    "greedy": 71.8,
+    "sp_retry": 68.64,
+    "larm_retry": 68.82,
+    "larm2": 70.3
+   },
+   "gap": {
+    "sp": -10.6,
+    "ecmp": -10.68,
+    "urm": -15.78,
+    "larm": -11.21,
+    "greedy": 0.0,
+    "sp_retry": -3.16,
+    "larm_retry": -2.98,
+    "larm2": -1.5
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 36.04,
+    "larm": 40.58,
+    "greedy": 51.39,
+    "sp_retry": 51.39,
+    "larm_retry": 51.39,
+    "larm2": 51.39
+   },
+   "gap": {
+    "sp": -10.35,
+    "ecmp": -10.4,
+    "urm": -15.35,
+    "larm": -10.81,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1500,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 36.04,
+    "larm": 40.58,
+    "greedy": 51.39,
+    "sp_retry": 51.39,
+    "larm_retry": 51.39,
+    "larm2": 51.39
+   },
+   "gap": {
+    "sp": -10.35,
+    "ecmp": -10.4,
+    "urm": -15.35,
+    "larm": -10.81,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 2100,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 36.04,
+    "larm": 40.58,
+    "greedy": 51.39,
+    "sp_retry": 51.39,
+    "larm_retry": 51.39,
+    "larm2": 51.39
+   },
+   "gap": {
+    "sp": -10.35,
+    "ecmp": -10.4,
+    "urm": -15.35,
+    "larm": -10.81,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "static",
+   "budget": 600,
+   "admission": {
+    "sp": 84.21,
+    "ecmp": 84.13,
+    "urm": 78.82,
+    "larm": 83.39,
+    "greedy": 94.91,
+    "sp_retry": 87.21,
+    "larm_retry": 86.99,
+    "larm2": 91.34
+   },
+   "gap": {
+    "sp": -10.7,
+    "ecmp": -10.78,
+    "urm": -16.09,
+    "larm": -11.52,
+    "greedy": 0.0,
+    "sp_retry": -7.7,
+    "larm_retry": -7.92,
+    "larm2": -3.57
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "static",
+   "budget": 800,
+   "admission": {
+    "sp": 61.2,
+    "ecmp": 61.12,
+    "urm": 56.02,
+    "larm": 60.59,
+    "greedy": 71.8,
+    "sp_retry": 68.64,
+    "larm_retry": 68.82,
+    "larm2": 70.3
+   },
+   "gap": {
+    "sp": -10.6,
+    "ecmp": -10.68,
+    "urm": -15.78,
+    "larm": -11.21,
+    "greedy": 0.0,
+    "sp_retry": -3.16,
+    "larm_retry": -2.98,
+    "larm2": -1.5
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "static",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 36.04,
+    "larm": 40.58,
+    "greedy": 51.39,
+    "sp_retry": 51.39,
+    "larm_retry": 51.39,
+    "larm2": 51.39
+   },
+   "gap": {
+    "sp": -10.35,
+    "ecmp": -10.4,
+    "urm": -15.35,
+    "larm": -10.81,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 600,
+   "admission": {
+    "sp": 84.21,
+    "ecmp": 84.13,
+    "urm": 78.82,
+    "larm": 83.39,
+    "greedy": 94.91,
+    "sp_retry": 87.21,
+    "larm_retry": 86.99,
+    "larm2": 91.34
+   },
+   "gap": {
+    "sp": -10.7,
+    "ecmp": -10.78,
+    "urm": -16.09,
+    "larm": -11.52,
+    "greedy": 0.0,
+    "sp_retry": -7.7,
+    "larm_retry": -7.92,
+    "larm2": -3.57
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 800,
+   "admission": {
+    "sp": 61.2,
+    "ecmp": 61.12,
+    "urm": 56.02,
+    "larm": 60.59,
+    "greedy": 71.8,
+    "sp_retry": 68.64,
+    "larm_retry": 68.82,
+    "larm2": 70.3
+   },
+   "gap": {
+    "sp": -10.6,
+    "ecmp": -10.68,
+    "urm": -15.78,
+    "larm": -11.21,
+    "greedy": 0.0,
+    "sp_retry": -3.16,
+    "larm_retry": -2.98,
+    "larm2": -1.5
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "aware",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 36.04,
+    "larm": 40.58,
+    "greedy": 51.39,
+    "sp_retry": 51.39,
+    "larm_retry": 51.39,
+    "larm2": 51.39
+   },
+   "gap": {
+    "sp": -10.35,
+    "ecmp": -10.4,
+    "urm": -15.35,
+    "larm": -10.81,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "yen",
+   "adversary": "smart",
+   "budget": 600,
+   "admission": {
+    "sp": 95.99,
+    "ecmp": 95.25,
+    "urm": 90.76,
+    "larm": 93.91,
+    "greedy": 99.79,
+    "sp_retry": 96.79,
+    "larm_retry": 95.26,
+    "larm2": 98.44
+   },
+   "gap": {
+    "sp": -3.8,
+    "ecmp": -4.54,
+    "urm": -9.03,
+    "larm": -5.88,
+    "greedy": 0.0,
+    "sp_retry": -3.0,
+    "larm_retry": -4.53,
+    "larm2": -1.35
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 150,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 300,
+   "admission": {
+    "sp": 99.81,
+    "ecmp": 99.92,
+    "urm": 99.84,
+    "larm": 99.92,
+    "greedy": 100.0,
+    "sp_retry": 99.95,
+    "larm_retry": 99.94,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": -0.19,
+    "ecmp": -0.08,
+    "urm": -0.16,
+    "larm": -0.08,
+    "greedy": 0.0,
+    "sp_retry": -0.05,
+    "larm_retry": -0.06,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 450,
+   "admission": {
+    "sp": 95.39,
+    "ecmp": 96.29,
+    "urm": 96.31,
+    "larm": 96.77,
+    "greedy": 98.7,
+    "sp_retry": 98.02,
+    "larm_retry": 97.44,
+    "larm2": 97.79
+   },
+   "gap": {
+    "sp": -3.31,
+    "ecmp": -2.41,
+    "urm": -2.39,
+    "larm": -1.93,
+    "greedy": 0.0,
+    "sp_retry": -0.68,
+    "larm_retry": -1.26,
+    "larm2": -0.91
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 85.49,
+    "ecmp": 87.07,
+    "urm": 84.39,
+    "larm": 87.46,
+    "greedy": 94.03,
+    "sp_retry": 93.0,
+    "larm_retry": 89.8,
+    "larm2": 92.18
+   },
+   "gap": {
+    "sp": -8.54,
+    "ecmp": -6.96,
+    "urm": -9.64,
+    "larm": -6.57,
+    "greedy": 0.0,
+    "sp_retry": -1.03,
+    "larm_retry": -4.23,
+    "larm2": -1.85
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 800,
+   "admission": {
+    "sp": 63.04,
+    "ecmp": 64.64,
+    "urm": 60.83,
+    "larm": 64.49,
+    "greedy": 74.83,
+    "sp_retry": 75.11,
+    "larm_retry": 71.84,
+    "larm2": 74.94
+   },
+   "gap": {
+    "sp": -12.07,
+    "ecmp": -10.47,
+    "urm": -14.28,
+    "larm": -10.62,
+    "greedy": -0.28,
+    "sp_retry": 0.0,
+    "larm_retry": -3.27,
+    "larm2": -0.17
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 42.36,
+    "ecmp": 43.5,
+    "urm": 39.44,
+    "larm": 43.82,
+    "greedy": 60.84,
+    "sp_retry": 60.95,
+    "larm_retry": 57.9,
+    "larm2": 60.53
+   },
+   "gap": {
+    "sp": -18.59,
+    "ecmp": -17.45,
+    "urm": -21.51,
+    "larm": -17.13,
+    "greedy": -0.11,
+    "sp_retry": 0.0,
+    "larm_retry": -3.05,
+    "larm2": -0.42
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1500,
+   "admission": {
+    "sp": 42.36,
+    "ecmp": 43.5,
+    "urm": 39.44,
+    "larm": 43.53,
+    "greedy": 48.13,
+    "sp_retry": 51.88,
+    "larm_retry": 47.79,
+    "larm2": 49.93
+   },
+   "gap": {
+    "sp": -9.52,
+    "ecmp": -8.38,
+    "urm": -12.44,
+    "larm": -8.35,
+    "greedy": -3.75,
+    "sp_retry": 0.0,
+    "larm_retry": -4.09,
+    "larm2": -1.95
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "abilene_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 2100,
+   "admission": {
+    "sp": 42.36,
+    "ecmp": 43.5,
+    "urm": 39.44,
+    "larm": 43.53,
+    "greedy": 46.9,
+    "sp_retry": 51.46,
+    "larm_retry": 45.66,
+    "larm2": 48.4
+   },
+   "gap": {
+    "sp": -9.1,
+    "ecmp": -7.96,
+    "urm": -12.02,
+    "larm": -7.93,
+    "greedy": -4.56,
+    "sp_retry": 0.0,
+    "larm_retry": -5.8,
+    "larm2": -3.06
+   },
+   "best": [
+    "sp_retry"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 150,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 100.0,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": 0.0,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 300,
+   "admission": {
+    "sp": 100.0,
+    "ecmp": 100.0,
+    "urm": 99.98,
+    "larm": 100.0,
+    "greedy": 100.0,
+    "sp_retry": 100.0,
+    "larm_retry": 100.0,
+    "larm2": 100.0
+   },
+   "gap": {
+    "sp": 0.0,
+    "ecmp": 0.0,
+    "urm": -0.02,
+    "larm": 0.0,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "sp",
+    "ecmp",
+    "urm",
+    "larm",
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 450,
+   "admission": {
+    "sp": 97.84,
+    "ecmp": 98.07,
+    "urm": 95.81,
+    "larm": 98.35,
+    "greedy": 99.79,
+    "sp_retry": 98.41,
+    "larm_retry": 98.78,
+    "larm2": 99.37
+   },
+   "gap": {
+    "sp": -1.95,
+    "ecmp": -1.72,
+    "urm": -3.98,
+    "larm": -1.44,
+    "greedy": 0.0,
+    "sp_retry": -1.38,
+    "larm_retry": -1.01,
+    "larm2": -0.42
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 86.84,
+    "ecmp": 87.6,
+    "urm": 83.25,
+    "larm": 90.52,
+    "greedy": 95.03,
+    "sp_retry": 90.64,
+    "larm_retry": 92.56,
+    "larm2": 94.03
+   },
+   "gap": {
+    "sp": -8.19,
+    "ecmp": -7.43,
+    "urm": -11.78,
+    "larm": -4.51,
+    "greedy": 0.0,
+    "sp_retry": -4.39,
+    "larm_retry": -2.47,
+    "larm2": -1.0
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 800,
+   "admission": {
+    "sp": 64.07,
+    "ecmp": 64.04,
+    "urm": 60.42,
+    "larm": 68.48,
+    "greedy": 75.93,
+    "sp_retry": 73.1,
+    "larm_retry": 73.7,
+    "larm2": 75.01
+   },
+   "gap": {
+    "sp": -11.86,
+    "ecmp": -11.89,
+    "urm": -15.51,
+    "larm": -7.45,
+    "greedy": 0.0,
+    "sp_retry": -2.83,
+    "larm_retry": -2.23,
+    "larm2": -0.92
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 43.99,
+    "ecmp": 43.55,
+    "urm": 40.5,
+    "larm": 48.4,
+    "greedy": 57.87,
+    "sp_retry": 56.71,
+    "larm_retry": 58.74,
+    "larm2": 57.43
+   },
+   "gap": {
+    "sp": -14.75,
+    "ecmp": -15.19,
+    "urm": -18.24,
+    "larm": -10.34,
+    "greedy": -0.87,
+    "sp_retry": -2.03,
+    "larm_retry": 0.0,
+    "larm2": -1.31
+   },
+   "best": [
+    "larm_retry"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1500,
+   "admission": {
+    "sp": 43.99,
+    "ecmp": 43.55,
+    "urm": 40.5,
+    "larm": 48.1,
+    "greedy": 56.27,
+    "sp_retry": 55.57,
+    "larm_retry": 55.77,
+    "larm2": 56.34
+   },
+   "gap": {
+    "sp": -12.35,
+    "ecmp": -12.79,
+    "urm": -15.84,
+    "larm": -8.24,
+    "greedy": -0.07,
+    "sp_retry": -0.77,
+    "larm_retry": -0.57,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant_sndlib",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 2100,
+   "admission": {
+    "sp": 43.99,
+    "ecmp": 43.55,
+    "urm": 40.5,
+    "larm": 48.1,
+    "greedy": 55.14,
+    "sp_retry": 55.06,
+    "larm_retry": 55.28,
+    "larm2": 55.2
+   },
+   "gap": {
+    "sp": -11.29,
+    "ecmp": -11.73,
+    "urm": -14.78,
+    "larm": -7.18,
+    "greedy": -0.14,
+    "sp_retry": -0.22,
+    "larm_retry": 0.0,
+    "larm2": -0.08
+   },
+   "best": [
+    "larm_retry"
+   ]
+  },
+  {
+   "topology": "geant2009",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 87.49,
+    "ecmp": 87.37,
+    "urm": 78.45,
+    "larm": 85.49,
+    "greedy": 98.2,
+    "sp_retry": 90.07,
+    "larm_retry": 89.14,
+    "larm2": 94.15
+   },
+   "gap": {
+    "sp": -10.71,
+    "ecmp": -10.83,
+    "urm": -19.75,
+    "larm": -12.71,
+    "greedy": 0.0,
+    "sp_retry": -8.13,
+    "larm_retry": -9.06,
+    "larm2": -4.05
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2009",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 44.12,
+    "ecmp": 43.86,
+    "urm": 35.68,
+    "larm": 43.2,
+    "greedy": 55.07,
+    "sp_retry": 55.11,
+    "larm_retry": 55.07,
+    "larm2": 55.07
+   },
+   "gap": {
+    "sp": -10.99,
+    "ecmp": -11.25,
+    "urm": -19.43,
+    "larm": -11.91,
+    "greedy": -0.04,
+    "sp_retry": 0.0,
+    "larm_retry": -0.04,
+    "larm2": -0.04
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2010",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 84.58,
+    "ecmp": 84.54,
+    "urm": 78.64,
+    "larm": 82.26,
+    "greedy": 94.82,
+    "sp_retry": 87.69,
+    "larm_retry": 86.52,
+    "larm2": 91.31
+   },
+   "gap": {
+    "sp": -10.24,
+    "ecmp": -10.28,
+    "urm": -16.18,
+    "larm": -12.56,
+    "greedy": 0.0,
+    "sp_retry": -7.13,
+    "larm_retry": -8.3,
+    "larm2": -3.51
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2010",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.14,
+    "ecmp": 41.12,
+    "urm": 35.67,
+    "larm": 39.37,
+    "greedy": 51.14,
+    "sp_retry": 51.14,
+    "larm_retry": 51.14,
+    "larm2": 51.14
+   },
+   "gap": {
+    "sp": -10.0,
+    "ecmp": -10.02,
+    "urm": -15.47,
+    "larm": -11.77,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "uscarrier",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 86.54,
+    "ecmp": 86.36,
+    "urm": 85.66,
+    "larm": 86.72,
+    "greedy": 91.42,
+    "sp_retry": 87.72,
+    "larm_retry": 88.05,
+    "larm2": 90.49
+   },
+   "gap": {
+    "sp": -4.88,
+    "ecmp": -5.06,
+    "urm": -5.76,
+    "larm": -4.7,
+    "greedy": 0.0,
+    "sp_retry": -3.7,
+    "larm_retry": -3.37,
+    "larm2": -0.93
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "uscarrier",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 47.55,
+    "ecmp": 47.35,
+    "urm": 46.74,
+    "larm": 47.79,
+    "greedy": 53.39,
+    "sp_retry": 53.39,
+    "larm_retry": 53.39,
+    "larm2": 53.39
+   },
+   "gap": {
+    "sp": -5.84,
+    "ecmp": -6.04,
+    "urm": -6.65,
+    "larm": -5.6,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "cogentco",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 91.36,
+    "ecmp": 91.35,
+    "urm": 88.05,
+    "larm": 91.66,
+    "greedy": 99.34,
+    "sp_retry": 93.26,
+    "larm_retry": 93.26,
+    "larm2": 97.3
+   },
+   "gap": {
+    "sp": -7.98,
+    "ecmp": -7.99,
+    "urm": -11.29,
+    "larm": -7.68,
+    "greedy": 0.0,
+    "sp_retry": -6.08,
+    "larm_retry": -6.08,
+    "larm2": -2.04
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "cogentco",
+   "candidates": "yen",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 59.88,
+    "ecmp": 59.88,
+    "urm": 56.66,
+    "larm": 60.34,
+    "greedy": 68.42,
+    "sp_retry": 68.42,
+    "larm_retry": 69.24,
+    "larm2": 68.42
+   },
+   "gap": {
+    "sp": -9.36,
+    "ecmp": -9.36,
+    "urm": -12.58,
+    "larm": -8.9,
+    "greedy": -0.82,
+    "sp_retry": -0.82,
+    "larm_retry": 0.0,
+    "larm2": -0.82
+   },
+   "best": [
+    "larm_retry"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 86.35,
+    "ecmp": 86.55,
+    "urm": 84.73,
+    "larm": 88.62,
+    "greedy": 98.35,
+    "sp_retry": 94.45,
+    "larm_retry": 94.08,
+    "larm2": 98.08
+   },
+   "gap": {
+    "sp": -12.0,
+    "ecmp": -11.8,
+    "urm": -13.62,
+    "larm": -9.73,
+    "greedy": 0.0,
+    "sp_retry": -3.9,
+    "larm_retry": -4.27,
+    "larm2": -0.27
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 800,
+   "admission": {
+    "sp": 63.2,
+    "ecmp": 63.11,
+    "urm": 61.59,
+    "larm": 65.42,
+    "greedy": 80.59,
+    "sp_retry": 81.33,
+    "larm_retry": 75.48,
+    "larm2": 83.07
+   },
+   "gap": {
+    "sp": -19.87,
+    "ecmp": -19.96,
+    "urm": -21.48,
+    "larm": -17.65,
+    "greedy": -2.48,
+    "sp_retry": -1.74,
+    "larm_retry": -7.59,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 43.09,
+    "ecmp": 42.65,
+    "urm": 41.54,
+    "larm": 45.34,
+    "greedy": 63.87,
+    "sp_retry": 61.85,
+    "larm_retry": 61.42,
+    "larm2": 70.66
+   },
+   "gap": {
+    "sp": -27.57,
+    "ecmp": -28.01,
+    "urm": -29.12,
+    "larm": -25.32,
+    "greedy": -6.79,
+    "sp_retry": -8.81,
+    "larm_retry": -9.24,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "abilene",
+   "candidates": "div",
+   "adversary": "aware",
+   "budget": 1100,
+   "admission": {
+    "sp": 49.48,
+    "ecmp": 49.59,
+    "urm": 42.8,
+    "larm": 47.5,
+    "greedy": 66.03,
+    "sp_retry": 63.01,
+    "larm_retry": 61.78,
+    "larm2": 64.51
+   },
+   "gap": {
+    "sp": -16.55,
+    "ecmp": -16.44,
+    "urm": -23.23,
+    "larm": -18.53,
+    "greedy": 0.0,
+    "sp_retry": -3.02,
+    "larm_retry": -4.25,
+    "larm2": -1.52
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 84.21,
+    "ecmp": 84.13,
+    "urm": 85.01,
+    "larm": 91.42,
+    "greedy": 99.95,
+    "sp_retry": 96.94,
+    "larm_retry": 97.96,
+    "larm2": 99.76
+   },
+   "gap": {
+    "sp": -15.74,
+    "ecmp": -15.82,
+    "urm": -14.94,
+    "larm": -8.53,
+    "greedy": 0.0,
+    "sp_retry": -3.01,
+    "larm_retry": -1.99,
+    "larm2": -0.19
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 800,
+   "admission": {
+    "sp": 61.2,
+    "ecmp": 61.12,
+    "urm": 61.93,
+    "larm": 68.59,
+    "greedy": 92.56,
+    "sp_retry": 91.16,
+    "larm_retry": 91.29,
+    "larm2": 92.93
+   },
+   "gap": {
+    "sp": -31.73,
+    "ecmp": -31.81,
+    "urm": -31.0,
+    "larm": -24.34,
+    "greedy": -0.37,
+    "sp_retry": -1.77,
+    "larm_retry": -1.64,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 41.78,
+    "larm": 48.34,
+    "greedy": 90.62,
+    "sp_retry": 90.14,
+    "larm_retry": 89.94,
+    "larm2": 90.59
+   },
+   "gap": {
+    "sp": -49.58,
+    "ecmp": -49.63,
+    "urm": -48.84,
+    "larm": -42.28,
+    "greedy": 0.0,
+    "sp_retry": -0.48,
+    "larm_retry": -0.68,
+    "larm2": -0.03
+   },
+   "best": [
+    "greedy",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2012",
+   "candidates": "div",
+   "adversary": "aware",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.04,
+    "ecmp": 40.99,
+    "urm": 41.78,
+    "larm": 48.34,
+    "greedy": 80.14,
+    "sp_retry": 80.14,
+    "larm_retry": 80.14,
+    "larm2": 80.14
+   },
+   "gap": {
+    "sp": -39.1,
+    "ecmp": -39.15,
+    "urm": -38.36,
+    "larm": -31.8,
+    "greedy": 0.0,
+    "sp_retry": 0.0,
+    "larm_retry": 0.0,
+    "larm2": 0.0
+   },
+   "best": [
+    "greedy",
+    "sp_retry",
+    "larm_retry",
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2009",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 87.49,
+    "ecmp": 87.37,
+    "urm": 85.35,
+    "larm": 92.0,
+    "greedy": 99.25,
+    "sp_retry": 96.14,
+    "larm_retry": 97.33,
+    "larm2": 99.71
+   },
+   "gap": {
+    "sp": -12.22,
+    "ecmp": -12.34,
+    "urm": -14.36,
+    "larm": -7.71,
+    "greedy": -0.46,
+    "sp_retry": -3.57,
+    "larm_retry": -2.38,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "geant2009",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 44.12,
+    "ecmp": 43.86,
+    "urm": 41.89,
+    "larm": 49.28,
+    "greedy": 89.01,
+    "sp_retry": 88.64,
+    "larm_retry": 89.17,
+    "larm2": 88.84
+   },
+   "gap": {
+    "sp": -45.05,
+    "ecmp": -45.31,
+    "urm": -47.28,
+    "larm": -39.89,
+    "greedy": -0.16,
+    "sp_retry": -0.53,
+    "larm_retry": 0.0,
+    "larm2": -0.33
+   },
+   "best": [
+    "larm_retry"
+   ]
+  },
+  {
+   "topology": "geant2010",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 84.58,
+    "ecmp": 84.54,
+    "urm": 83.75,
+    "larm": 88.38,
+    "greedy": 99.79,
+    "sp_retry": 94.52,
+    "larm_retry": 95.62,
+    "larm2": 99.58
+   },
+   "gap": {
+    "sp": -15.21,
+    "ecmp": -15.25,
+    "urm": -16.04,
+    "larm": -11.41,
+    "greedy": 0.0,
+    "sp_retry": -5.27,
+    "larm_retry": -4.17,
+    "larm2": -0.21
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "geant2010",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 41.14,
+    "ecmp": 41.12,
+    "urm": 40.46,
+    "larm": 45.33,
+    "greedy": 83.25,
+    "sp_retry": 78.66,
+    "larm_retry": 82.58,
+    "larm2": 82.12
+   },
+   "gap": {
+    "sp": -42.11,
+    "ecmp": -42.13,
+    "urm": -42.79,
+    "larm": -37.92,
+    "greedy": 0.0,
+    "sp_retry": -4.59,
+    "larm_retry": -0.67,
+    "larm2": -1.13
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "uscarrier",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 86.54,
+    "ecmp": 86.36,
+    "urm": 97.13,
+    "larm": 98.06,
+    "greedy": 99.68,
+    "sp_retry": 98.65,
+    "larm_retry": 99.39,
+    "larm2": 99.59
+   },
+   "gap": {
+    "sp": -13.14,
+    "ecmp": -13.32,
+    "urm": -2.55,
+    "larm": -1.62,
+    "greedy": 0.0,
+    "sp_retry": -1.03,
+    "larm_retry": -0.29,
+    "larm2": -0.09
+   },
+   "best": [
+    "greedy"
+   ]
+  },
+  {
+   "topology": "uscarrier",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 47.55,
+    "ecmp": 47.35,
+    "urm": 57.85,
+    "larm": 59.26,
+    "greedy": 94.01,
+    "sp_retry": 93.56,
+    "larm_retry": 88.58,
+    "larm2": 96.25
+   },
+   "gap": {
+    "sp": -48.7,
+    "ecmp": -48.9,
+    "urm": -38.4,
+    "larm": -36.99,
+    "greedy": -2.24,
+    "sp_retry": -2.69,
+    "larm_retry": -7.67,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "cogentco",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 600,
+   "admission": {
+    "sp": 91.36,
+    "ecmp": 91.35,
+    "urm": 88.44,
+    "larm": 94.93,
+    "greedy": 98.71,
+    "sp_retry": 97.65,
+    "larm_retry": 98.1,
+    "larm2": 99.01
+   },
+   "gap": {
+    "sp": -7.65,
+    "ecmp": -7.66,
+    "urm": -10.57,
+    "larm": -4.08,
+    "greedy": -0.3,
+    "sp_retry": -1.36,
+    "larm_retry": -0.91,
+    "larm2": 0.0
+   },
+   "best": [
+    "larm2"
+   ]
+  },
+  {
+   "topology": "cogentco",
+   "candidates": "div",
+   "adversary": "adaptive",
+   "budget": 1100,
+   "admission": {
+    "sp": 59.88,
+    "ecmp": 59.88,
+    "urm": 57.03,
+    "larm": 63.66,
+    "greedy": 94.5,
+    "sp_retry": 92.5,
+    "larm_retry": 93.08,
+    "larm2": 93.98
+   },
+   "gap": {
+    "sp": -34.62,
+    "ecmp": -34.62,
+    "urm": -37.47,
+    "larm": -30.84,
+    "greedy": 0.0,
+    "sp_retry": -2.0,
+    "larm_retry": -1.42,
+    "larm2": -0.52
+   },
+   "best": [
+    "greedy"
+   ]
+  }
+ ],
+ "summary": {
+  "all": {
+   "settings": 80,
+   "sp": {
+    "mean_gap": -13.18,
+    "worst_gap": -49.58,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 9
+   },
+   "ecmp": {
+    "mean_gap": -13.17,
+    "worst_gap": -49.63,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 10
+   },
+   "urm": {
+    "mean_gap": -14.84,
+    "worst_gap": -48.84,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 10
+   },
+   "larm": {
+    "mean_gap": -10.95,
+    "worst_gap": -42.28,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 9
+   },
+   "greedy": {
+    "mean_gap": -0.57,
+    "worst_gap": -6.79,
+    "worst_at": "abilene/div/adaptive/1100",
+    "best_or_tied": 56
+   },
+   "sp_retry": {
+    "mean_gap": -1.79,
+    "worst_gap": -8.81,
+    "worst_at": "abilene/div/adaptive/1100",
+    "best_or_tied": 35
+   },
+   "larm_retry": {
+    "mean_gap": -2.41,
+    "worst_gap": -9.7,
+    "worst_at": "abilene/yen/adaptive/1100",
+    "best_or_tied": 28
+   },
+   "larm2": {
+    "mean_gap": -0.74,
+    "worst_gap": -4.05,
+    "worst_at": "geant2009/yen/adaptive/600",
+    "best_or_tied": 37
+   }
+  },
+  "stress_and_above": {
+   "settings": 65,
+   "sp": {
+    "mean_gap": -16.11,
+    "worst_gap": -49.58,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 0
+   },
+   "ecmp": {
+    "mean_gap": -16.13,
+    "worst_gap": -49.63,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 0
+   },
+   "urm": {
+    "mean_gap": -18.08,
+    "worst_gap": -48.84,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 0
+   },
+   "larm": {
+    "mean_gap": -13.4,
+    "worst_gap": -42.28,
+    "worst_at": "geant2012/div/adaptive/1100",
+    "best_or_tied": 0
+   },
+   "greedy": {
+    "mean_gap": -0.7,
+    "worst_gap": -6.79,
+    "worst_at": "abilene/div/adaptive/1100",
+    "best_or_tied": 41
+   },
+   "sp_retry": {
+    "mean_gap": -2.16,
+    "worst_gap": -8.81,
+    "worst_at": "abilene/div/adaptive/1100",
+    "best_or_tied": 25
+   },
+   "larm_retry": {
+    "mean_gap": -2.91,
+    "worst_gap": -9.7,
+    "worst_at": "abilene/yen/adaptive/1100",
+    "best_or_tied": 18
+   },
+   "larm2": {
+    "mean_gap": -0.89,
+    "worst_gap": -4.05,
+    "worst_at": "geant2009/yen/adaptive/600",
+    "best_or_tied": 24
+   }
+  },
+  "table2": {
+   "settings": 23,
+   "sp": {
+    "mean_gap": -12.68,
+    "worst_gap": -37.16,
+    "worst_at": "fattree4/yen/adaptive/1300",
+    "best_or_tied": 0
+   },
+   "ecmp": {
+    "mean_gap": -12.55,
+    "worst_gap": -38.94,
+    "worst_at": "fattree4/yen/adaptive/1300",
+    "best_or_tied": 0
+   },
+   "urm": {
+    "mean_gap": -13.89,
+    "worst_gap": -28.3,
+    "worst_at": "fattree4/yen/adaptive/1300",
+    "best_or_tied": 0
+   },
+   "larm": {
+    "mean_gap": -9.2,
+    "worst_gap": -22.17,
+    "worst_at": "fattree4/yen/adaptive/1300",
+    "best_or_tied": 0
+   },
+   "greedy": {
+    "mean_gap": -0.53,
+    "worst_gap": -4.54,
+    "worst_at": "abilene/yen/adaptive/1100",
+    "best_or_tied": 16
+   },
+   "sp_retry": {
+    "mean_gap": -1.96,
+    "worst_gap": -7.7,
+    "worst_at": "geant2012/yen/adaptive/600",
+    "best_or_tied": 10
+   },
+   "larm_retry": {
+    "mean_gap": -2.83,
+    "worst_gap": -9.7,
+    "worst_at": "abilene/yen/adaptive/1100",
+    "best_or_tied": 7
+   },
+   "larm2": {
+    "mean_gap": -0.78,
+    "worst_gap": -3.57,
+    "worst_at": "geant2012/yen/adaptive/600",
+    "best_or_tied": 8
+   }
+  }
+ }
+}

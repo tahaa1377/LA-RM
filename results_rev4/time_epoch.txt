@@ -1,0 +1,10 @@
+larm: 1556 pairs, 1489 automata with more than one candidate, 40 benign flows per epoch
+  update of all automata: median 12.6 ms (min 11.6, max 25.0)
+  credit for the epoch's flows: median 0.23 ms (min 0.21, max 0.39)
+  whole step: median 22.8 ms (min 12.0, max 28.3)
+  state: three vectors per pair, 141 kB in all
+larm2: 1556 pairs, 1489 automata with more than one candidate, 40 benign flows per epoch
+  update of all automata: median 14.0 ms (min 11.7, max 34.0)
+  scoring of all candidates: median 4.2 ms (min 3.7, max 6.1)
+  whole step: median 20.3 ms (min 14.0, max 31.9)
+  state: three vectors per pair, 141 kB in all

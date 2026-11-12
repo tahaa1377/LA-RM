@@ -1,0 +1,340 @@
+{
+ "k4": {
+  "urm": {
+   "n": 10,
+   "admission": [
+    0.6854,
+    0.0196
+   ],
+   "admission_avoidable": [
+    0.9084,
+    0.0133
+   ],
+   "admission_unavoidable": [
+    0.434,
+    0.0321
+   ],
+   "via_core_avoidable": [
+    0.2244,
+    0.0111
+   ],
+   "busiest": [
+    0.9986,
+    0.0015
+   ]
+  },
+  "larm": {
+   "n": 10,
+   "admission": [
+    0.7252,
+    0.023
+   ],
+   "admission_avoidable": [
+    0.9767,
+    0.0092
+   ],
+   "admission_unavoidable": [
+    0.4415,
+    0.0439
+   ],
+   "via_core_avoidable": [
+    0.1124,
+    0.016
+   ],
+   "busiest": [
+    0.9989,
+    0.0012
+   ]
+  },
+  "greedy": {
+   "n": 10,
+   "admission": [
+    0.7448,
+    0.0221
+   ],
+   "admission_avoidable": [
+    1.0,
+    0.0
+   ],
+   "admission_unavoidable": [
+    0.4569,
+    0.0461
+   ],
+   "via_core_avoidable": [
+    0.0,
+    0.0
+   ],
+   "busiest": [
+    0.9974,
+    0.0018
+   ]
+  },
+  "sp_retry": {
+   "n": 10,
+   "admission": [
+    0.749,
+    0.0194
+   ],
+   "admission_avoidable": [
+    1.0,
+    0.0
+   ],
+   "admission_unavoidable": [
+    0.4657,
+    0.0416
+   ],
+   "via_core_avoidable": [
+    0.157,
+    0.0298
+   ],
+   "busiest": [
+    0.9984,
+    0.0014
+   ]
+  },
+  "larm_retry": {
+   "n": 10,
+   "admission": [
+    0.7517,
+    0.0284
+   ],
+   "admission_avoidable": [
+    1.0,
+    0.0
+   ],
+   "admission_unavoidable": [
+    0.472,
+    0.0576
+   ],
+   "via_core_avoidable": [
+    0.0992,
+    0.0121
+   ],
+   "busiest": [
+    0.9983,
+    0.0019
+   ]
+  }
+ },
+ "k3": {
+  "urm": {
+   "n": 10,
+   "admission": [
+    0.6088,
+    0.0189
+   ],
+   "admission_avoidable": [
+    0.7898,
+    0.0243
+   ],
+   "admission_unavoidable": [
+    0.4041,
+    0.0198
+   ],
+   "via_core_avoidable": [
+    0.2945,
+    0.0206
+   ],
+   "busiest": [
+    0.9978,
+    0.0014
+   ]
+  },
+  "larm": {
+   "n": 10,
+   "admission": [
+    0.7061,
+    0.0131
+   ],
+   "admission_avoidable": [
+    0.933,
+    0.0093
+   ],
+   "admission_unavoidable": [
+    0.45,
+    0.0321
+   ],
+   "via_core_avoidable": [
+    0.1478,
+    0.0083
+   ],
+   "busiest": [
+    0.9971,
+    0.0014
+   ]
+  },
+  "greedy": {
+   "n": 10,
+   "admission": [
+    0.747,
+    0.0122
+   ],
+   "admission_avoidable": [
+    1.0,
+    0.0
+   ],
+   "admission_unavoidable": [
+    0.4615,
+    0.0259
+   ],
+   "via_core_avoidable": [
+    0.0,
+    0.0
+   ],
+   "busiest": [
+    0.9972,
+    0.0025
+   ]
+  },
+  "sp_retry": {
+   "n": 10,
+   "admission": [
+    0.7631,
+    0.0181
+   ],
+   "admission_avoidable": [
+    1.0,
+    0.0
+   ],
+   "admission_unavoidable": [
+    0.4962,
+    0.0335
+   ],
+   "via_core_avoidable": [
+    0.1584,
+    0.0282
+   ],
+   "busiest": [
+    0.9993,
+    0.0018
+   ]
+  },
+  "larm_retry": {
+   "n": 10,
+   "admission": [
+    0.7544,
+    0.015
+   ],
+   "admission_avoidable": [
+    1.0,
+    0.0
+   ],
+   "admission_unavoidable": [
+    0.4777,
+    0.0262
+   ],
+   "via_core_avoidable": [
+    0.1103,
+    0.0106
+   ],
+   "busiest": [
+    0.9991,
+    0.0022
+   ]
+  }
+ },
+ "k4_minus_k3": {
+  "urm": {
+   "admission": [
+    0.0767,
+    0.0173
+   ],
+   "admission_avoidable": [
+    0.1186,
+    0.0198
+   ]
+  },
+  "larm": {
+   "admission": [
+    0.0191,
+    0.0283
+   ],
+   "admission_avoidable": [
+    0.0437,
+    0.0145
+   ]
+  },
+  "greedy": {
+   "admission": [
+    -0.0022,
+    0.019
+   ],
+   "admission_avoidable": [
+    0.0,
+    0.0
+   ]
+  },
+  "sp_retry": {
+   "admission": [
+    -0.0141,
+    0.0296
+   ],
+   "admission_avoidable": [
+    0.0,
+    0.0
+   ]
+  },
+  "larm_retry": {
+   "admission": [
+    -0.0027,
+    0.0283
+   ],
+   "admission_avoidable": [
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "k4_minus_sp": {
+  "urm": {
+   "admission": [
+    0.025,
+    0.0406
+   ],
+   "admission_avoidable": [
+    0.0822,
+    0.0649
+   ]
+  },
+  "larm": {
+   "admission": [
+    0.0648,
+    0.0358
+   ],
+   "admission_avoidable": [
+    0.1505,
+    0.0525
+   ]
+  },
+  "greedy": {
+   "admission": [
+    0.0844,
+    0.0315
+   ],
+   "admission_avoidable": [
+    0.1739,
+    0.056
+   ]
+  },
+  "sp_retry": {
+   "admission": [
+    0.0885,
+    0.0407
+   ],
+   "admission_avoidable": [
+    0.1739,
+    0.056
+   ]
+  },
+  "larm_retry": {
+   "admission": [
+    0.0913,
+    0.049
+   ],
+   "admission_avoidable": [
+    0.1739,
+    0.056
+   ]
+  }
+ }
+}
