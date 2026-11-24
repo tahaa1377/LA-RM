@@ -1,0 +1,1506 @@
+{
+ "seeds": [
+  100,
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109
+ ],
+ "adversary": "adaptive",
+ "configs": {
+  "greedy": {
+   "fattree4:900": {
+    "admission": [
+     0.9815,
+     0.0056
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9688,
+     0.0084
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.985,
+     0.0043
+    ],
+    "stretch_admitted": [
+     1.0316,
+     0.0025
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7841,
+     0.0182
+    ],
+    "stretch_admitted": [
+     1.0861,
+     0.0035
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9513,
+     0.0079
+    ],
+    "stretch_admitted": [
+     1.0283,
+     0.0017
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7174,
+     0.0075
+    ],
+    "stretch_admitted": [
+     1.0372,
+     0.0022
+    ]
+   }
+  },
+  "sp_retry": {
+   "fattree4:900": {
+    "admission": [
+     1.0,
+     0.0
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     1.0,
+     0.0
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9494,
+     0.0089
+    ],
+    "stretch_admitted": [
+     1.0472,
+     0.0127
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.769,
+     0.0126
+    ],
+    "stretch_admitted": [
+     1.0919,
+     0.0062
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.8736,
+     0.008
+    ],
+    "stretch_admitted": [
+     1.0056,
+     0.0007
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6868,
+     0.0073
+    ],
+    "stretch_admitted": [
+     1.0211,
+     0.0015
+    ]
+   }
+  },
+  "larm_retry": {
+   "fattree4:900": {
+    "admission": [
+     0.9965,
+     0.0053
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9964,
+     0.0066
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9336,
+     0.0082
+    ],
+    "stretch_admitted": [
+     1.3419,
+     0.0057
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7247,
+     0.0174
+    ],
+    "stretch_admitted": [
+     1.2817,
+     0.0088
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.8723,
+     0.0062
+    ],
+    "stretch_admitted": [
+     1.2229,
+     0.0033
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6881,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.2104,
+     0.0054
+    ]
+   }
+  },
+  "larm": {
+   "fattree4:900": {
+    "admission": [
+     0.8505,
+     0.0103
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.7575,
+     0.0248
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.8708,
+     0.0092
+    ],
+    "stretch_admitted": [
+     1.3174,
+     0.0028
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.6367,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.2775,
+     0.0051
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.834,
+     0.0101
+    ],
+    "stretch_admitted": [
+     1.228,
+     0.004
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6051,
+     0.0079
+    ],
+    "stretch_admitted": [
+     1.2201,
+     0.0044
+    ]
+   }
+  },
+  "larm|full|a=0.05|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.8363,
+     0.0184
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.8218,
+     0.028
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9702,
+     0.0056
+    ],
+    "stretch_admitted": [
+     1.1509,
+     0.0068
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7478,
+     0.011
+    ],
+    "stretch_admitted": [
+     1.1685,
+     0.0102
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.8975,
+     0.0087
+    ],
+    "stretch_admitted": [
+     1.1381,
+     0.0039
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6666,
+     0.007
+    ],
+    "stretch_admitted": [
+     1.1303,
+     0.0033
+    ]
+   }
+  },
+  "larm_retry|full|a=0.05|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.9869,
+     0.0111
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9783,
+     0.019
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9853,
+     0.0033
+    ],
+    "stretch_admitted": [
+     1.1625,
+     0.0076
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7808,
+     0.0271
+    ],
+    "stretch_admitted": [
+     1.1729,
+     0.0085
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9086,
+     0.008
+    ],
+    "stretch_admitted": [
+     1.1372,
+     0.0035
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7009,
+     0.0068
+    ],
+    "stretch_admitted": [
+     1.1332,
+     0.0034
+    ]
+   }
+  },
+  "larm|full|a=0.05|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.8363,
+     0.0184
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.8218,
+     0.028
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9702,
+     0.0056
+    ],
+    "stretch_admitted": [
+     1.1509,
+     0.0068
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7478,
+     0.011
+    ],
+    "stretch_admitted": [
+     1.1685,
+     0.0102
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.8975,
+     0.0087
+    ],
+    "stretch_admitted": [
+     1.1381,
+     0.0039
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6666,
+     0.007
+    ],
+    "stretch_admitted": [
+     1.1303,
+     0.0033
+    ]
+   }
+  },
+  "larm_retry|full|a=0.05|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.9869,
+     0.0111
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9783,
+     0.019
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9853,
+     0.0033
+    ],
+    "stretch_admitted": [
+     1.1625,
+     0.0076
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7808,
+     0.0271
+    ],
+    "stretch_admitted": [
+     1.1729,
+     0.0085
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9086,
+     0.008
+    ],
+    "stretch_admitted": [
+     1.1372,
+     0.0035
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7009,
+     0.0068
+    ],
+    "stretch_admitted": [
+     1.1332,
+     0.0034
+    ]
+   }
+  },
+  "larm|full|a=0.1|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.8341,
+     0.0156
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.8759,
+     0.0217
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9752,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.1457,
+     0.0069
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7452,
+     0.0124
+    ],
+    "stretch_admitted": [
+     1.1605,
+     0.0161
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9039,
+     0.0082
+    ],
+    "stretch_admitted": [
+     1.1455,
+     0.0029
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6717,
+     0.0066
+    ],
+    "stretch_admitted": [
+     1.1361,
+     0.0034
+    ]
+   }
+  },
+  "larm_retry|full|a=0.1|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.9869,
+     0.0111
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9877,
+     0.0059
+    ],
+    "stretch_admitted": [
+     1.1508,
+     0.0074
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7906,
+     0.0251
+    ],
+    "stretch_admitted": [
+     1.1739,
+     0.0083
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9135,
+     0.0067
+    ],
+    "stretch_admitted": [
+     1.1452,
+     0.0034
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7024,
+     0.007
+    ],
+    "stretch_admitted": [
+     1.1399,
+     0.005
+    ]
+   }
+  },
+  "larm|full|a=0.1|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.8341,
+     0.0156
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.8759,
+     0.0217
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9752,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.1457,
+     0.0069
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7452,
+     0.0124
+    ],
+    "stretch_admitted": [
+     1.1605,
+     0.0161
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9039,
+     0.0082
+    ],
+    "stretch_admitted": [
+     1.1455,
+     0.0029
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6717,
+     0.0066
+    ],
+    "stretch_admitted": [
+     1.1361,
+     0.0034
+    ]
+   }
+  },
+  "larm_retry|full|a=0.1|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.9869,
+     0.0111
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9877,
+     0.0059
+    ],
+    "stretch_admitted": [
+     1.1508,
+     0.0074
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7906,
+     0.0251
+    ],
+    "stretch_admitted": [
+     1.1739,
+     0.0083
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9135,
+     0.0067
+    ],
+    "stretch_admitted": [
+     1.1452,
+     0.0034
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7024,
+     0.007
+    ],
+    "stretch_admitted": [
+     1.1399,
+     0.005
+    ]
+   }
+  },
+  "larm|full|a=0.2|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.8794,
+     0.014
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9163,
+     0.0204
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9756,
+     0.0127
+    ],
+    "stretch_admitted": [
+     1.144,
+     0.0084
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7441,
+     0.0125
+    ],
+    "stretch_admitted": [
+     1.1613,
+     0.0138
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9061,
+     0.0086
+    ],
+    "stretch_admitted": [
+     1.1503,
+     0.0029
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6733,
+     0.0066
+    ],
+    "stretch_admitted": [
+     1.1405,
+     0.0035
+    ]
+   }
+  },
+  "larm_retry|full|a=0.2|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.9894,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9873,
+     0.005
+    ],
+    "stretch_admitted": [
+     1.146,
+     0.0055
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7863,
+     0.0248
+    ],
+    "stretch_admitted": [
+     1.1796,
+     0.0118
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9143,
+     0.0075
+    ],
+    "stretch_admitted": [
+     1.1497,
+     0.0039
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7042,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.142,
+     0.0042
+    ]
+   }
+  },
+  "larm|full|a=0.2|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.8794,
+     0.014
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9163,
+     0.0204
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9756,
+     0.0127
+    ],
+    "stretch_admitted": [
+     1.144,
+     0.0084
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7441,
+     0.0125
+    ],
+    "stretch_admitted": [
+     1.1613,
+     0.0138
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9061,
+     0.0086
+    ],
+    "stretch_admitted": [
+     1.1503,
+     0.0029
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6733,
+     0.0066
+    ],
+    "stretch_admitted": [
+     1.1405,
+     0.0035
+    ]
+   }
+  },
+  "larm_retry|full|a=0.2|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.9894,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9873,
+     0.005
+    ],
+    "stretch_admitted": [
+     1.146,
+     0.0055
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7863,
+     0.0248
+    ],
+    "stretch_admitted": [
+     1.1796,
+     0.0118
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9143,
+     0.0075
+    ],
+    "stretch_admitted": [
+     1.1497,
+     0.0039
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7042,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.142,
+     0.0042
+    ]
+   }
+  },
+  "larm|full|a=0.4|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.9018,
+     0.0221
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9486,
+     0.0178
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9812,
+     0.012
+    ],
+    "stretch_admitted": [
+     1.1474,
+     0.008
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7471,
+     0.0088
+    ],
+    "stretch_admitted": [
+     1.1697,
+     0.0154
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9068,
+     0.0086
+    ],
+    "stretch_admitted": [
+     1.1534,
+     0.0029
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6738,
+     0.0064
+    ],
+    "stretch_admitted": [
+     1.1434,
+     0.0039
+    ]
+   }
+  },
+  "larm_retry|full|a=0.4|d0=0.0": {
+   "fattree4:900": {
+    "admission": [
+     0.9894,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9849,
+     0.008
+    ],
+    "stretch_admitted": [
+     1.1475,
+     0.0054
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7916,
+     0.0288
+    ],
+    "stretch_admitted": [
+     1.1824,
+     0.0096
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9168,
+     0.0078
+    ],
+    "stretch_admitted": [
+     1.1516,
+     0.0038
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7044,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.1444,
+     0.0045
+    ]
+   }
+  },
+  "larm|full|a=0.4|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.9018,
+     0.0221
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9486,
+     0.0178
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9812,
+     0.012
+    ],
+    "stretch_admitted": [
+     1.1474,
+     0.008
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7471,
+     0.0088
+    ],
+    "stretch_admitted": [
+     1.1697,
+     0.0154
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9068,
+     0.0086
+    ],
+    "stretch_admitted": [
+     1.1534,
+     0.0029
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6738,
+     0.0064
+    ],
+    "stretch_admitted": [
+     1.1434,
+     0.0039
+    ]
+   }
+  },
+  "larm_retry|full|a=0.4|d0=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.9894,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9849,
+     0.008
+    ],
+    "stretch_admitted": [
+     1.1475,
+     0.0054
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7916,
+     0.0288
+    ],
+    "stretch_admitted": [
+     1.1824,
+     0.0096
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9168,
+     0.0078
+    ],
+    "stretch_admitted": [
+     1.1516,
+     0.0038
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7044,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.1444,
+     0.0045
+    ]
+   }
+  },
+  "larm|full|a=0.2|d0=0.0|g=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.878,
+     0.0103
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9571,
+     0.0105
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9732,
+     0.0074
+    ],
+    "stretch_admitted": [
+     1.1661,
+     0.0129
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7074,
+     0.018
+    ],
+    "stretch_admitted": [
+     1.1887,
+     0.0061
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9079,
+     0.0085
+    ],
+    "stretch_admitted": [
+     1.1709,
+     0.0044
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6751,
+     0.0066
+    ],
+    "stretch_admitted": [
+     1.1568,
+     0.004
+    ]
+   }
+  },
+  "larm_retry|full|a=0.2|d0=0.0|g=0.5": {
+   "fattree4:900": {
+    "admission": [
+     0.9894,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9819,
+     0.0094
+    ],
+    "stretch_admitted": [
+     1.1728,
+     0.0082
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7472,
+     0.0326
+    ],
+    "stretch_admitted": [
+     1.2265,
+     0.0104
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9167,
+     0.0063
+    ],
+    "stretch_admitted": [
+     1.1698,
+     0.0043
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.704,
+     0.0069
+    ],
+    "stretch_admitted": [
+     1.1566,
+     0.0038
+    ]
+   }
+  },
+  "larm|full|a=0.2|d0=0.0|g=0.7": {
+   "fattree4:900": {
+    "admission": [
+     0.8745,
+     0.0087
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.956,
+     0.01
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9737,
+     0.0103
+    ],
+    "stretch_admitted": [
+     1.1516,
+     0.0125
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7224,
+     0.016
+    ],
+    "stretch_admitted": [
+     1.1833,
+     0.0089
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9072,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.1679,
+     0.0038
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.6746,
+     0.0064
+    ],
+    "stretch_admitted": [
+     1.1555,
+     0.0038
+    ]
+   }
+  },
+  "larm_retry|full|a=0.2|d0=0.0|g=0.7": {
+   "fattree4:900": {
+    "admission": [
+     0.9894,
+     0.0083
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "fattree4:1300": {
+    "admission": [
+     0.9822,
+     0.0136
+    ],
+    "stretch_admitted": [
+     1.0,
+     0.0
+    ]
+   },
+   "abilene:600": {
+    "admission": [
+     0.9808,
+     0.0054
+    ],
+    "stretch_admitted": [
+     1.1601,
+     0.0097
+    ]
+   },
+   "abilene:800": {
+    "admission": [
+     0.7609,
+     0.0326
+    ],
+    "stretch_admitted": [
+     1.2157,
+     0.0111
+    ]
+   },
+   "geant:600": {
+    "admission": [
+     0.9153,
+     0.0074
+    ],
+    "stretch_admitted": [
+     1.1667,
+     0.0048
+    ]
+   },
+   "geant:800": {
+    "admission": [
+     0.7041,
+     0.0072
+    ],
+    "stretch_admitted": [
+     1.1555,
+     0.0039
+    ]
+   }
+  }
+ },
+ "elapsed_s": 684.4
+}

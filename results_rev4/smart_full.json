@@ -1,0 +1,94 @@
+{
+ "seeds": 10,
+ "adversary": "smart",
+ "cases": {
+  "fattree4:900:sp": {
+   "share": 300,
+   "admission": [
+    0.9724,
+    0.0297
+   ],
+   "epochs_with_full_switch": [
+    0.1933,
+    0.1761
+   ]
+  },
+  "fattree4:900:greedy": {
+   "share": 300,
+   "admission": [
+    1.0,
+    0.0
+   ],
+   "epochs_with_full_switch": [
+    0.0244,
+    0.0317
+   ]
+  },
+  "fattree4:1300:sp": {
+   "share": 433,
+   "admission": [
+    0.9336,
+    0.0297
+   ],
+   "epochs_with_full_switch": [
+    0.4578,
+    0.159
+   ]
+  },
+  "fattree4:1300:greedy": {
+   "share": 433,
+   "admission": [
+    0.999,
+    0.0023
+   ],
+   "epochs_with_full_switch": [
+    0.1111,
+    0.0347
+   ]
+  },
+  "abilene:600:sp": {
+   "share": 200,
+   "admission": [
+    0.9327,
+    0.0267
+   ],
+   "epochs_with_full_switch": [
+    0.45,
+    0.1449
+   ]
+  },
+  "abilene:600:greedy": {
+   "share": 200,
+   "admission": [
+    1.0,
+    0.0
+   ],
+   "epochs_with_full_switch": [
+    0.0,
+    0.0
+   ]
+  },
+  "geant:600:sp": {
+   "share": 200,
+   "admission": [
+    0.9599,
+    0.0239
+   ],
+   "epochs_with_full_switch": [
+    0.2389,
+    0.1379
+   ]
+  },
+  "geant:600:greedy": {
+   "share": 200,
+   "admission": [
+    0.9979,
+    0.0032
+   ],
+   "epochs_with_full_switch": [
+    0.02,
+    0.0282
+   ]
+  }
+ }
+}

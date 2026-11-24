@@ -1,0 +1,776 @@
+diff --git a/data/sndlib/README.md b/data/sndlib/README.md
+index 9cec9d9..39c0bcb 100644
+--- a/data/sndlib/README.md
++++ b/data/sndlib/README.md
+@@ -46,8 +46,8 @@ other backbones.
+   `directed-abilene-zhang-5min-over-6months-ALL`, one XML file per matrix
+   (`demandMatrix-abilene-zhang-5min-YYYYMMDD-HHMM.xml`). Their metadata names Yin Zhang's
+   AbileneTM page as the origin.
+-- **Mirror used here.** Our sandbox could not reach the SNDlib server, so we read the
+-  series from a CSV conversion on GitHub:
++- **Mirror used here.** We could not download the series from the SNDlib server, so we
++  read it from a CSV conversion on GitHub:
+   - repository `lasseufpa/Unsupervised-Concept-Drift-Detection`, commit
+     `b1c9d2db9b927507f999c870af33b6c37f6ff6d0`
+   - files `datasets/abilene_demand_matrix.csv` (SHA-256
+diff --git a/larm/automaton.py b/larm/automaton.py
+index 6dac4bb..9ccdfb2 100644
+--- a/larm/automaton.py
++++ b/larm/automaton.py
+@@ -19,26 +19,32 @@ def entropy(p):
+ 
+ class PathAutomaton:
+     def __init__(self, r, a=0.05, eps=0.1, hmin_frac=0.5, forget=0.9,
+-                 prior_w=1.0, tie=0.01, rng=None):
++                 prior_w=1.0, tie=0.01, rng=None, d0=0.5):
+         self.r = r
+         self.a = a
+         self.eps = eps
+         self.hmin = hmin_frac * math.log(r) if r > 1 else 0.0
+         self.forget = forget
+         self.prior_w = prior_w
++        self.d0 = d0            # prior reward estimate of an action without evidence
+         self.tie = tie
+         self.rng = rng if rng is not None else np.random.default_rng()
+         self.p = np.full(r, 1.0 / r)
+         self.S = np.zeros(r)
+         self.W = np.zeros(r)
++        self._pe = None         # mixed vector, recomputed only after p has changed
+ 
+     def p_eff(self):
+-        u = np.full(self.r, 1.0 / self.r)
+-        pe = (1.0 - self.eps) * self.p + self.eps * u
+-        if self.r > 1:
+-            while entropy(pe) < self.hmin:
+-                pe = 0.9 * pe + 0.1 * u
+-        return pe
++        # p changes only in update(), once per epoch, so the mixed vector is
++        # computed at most once per epoch, on the pair's first flow after the update
++        if self._pe is None:
++            u = np.full(self.r, 1.0 / self.r)
++            pe = (1.0 - self.eps) * self.p + self.eps * u
++            if self.r > 1:
++                while entropy(pe) < self.hmin:
++                    pe = 0.9 * pe + 0.1 * u
++            self._pe = pe
++        return self._pe
+ 
+     def choose(self):
+         if self.r == 1:
+@@ -49,8 +55,13 @@ class PathAutomaton:
+         self.S[i] += weight * reward
+         self.W[i] += weight
+ 
++    def credit_all(self, rewards):
++        """One reward per action, for every action at once (all-candidate feedback)."""
++        self.S += rewards
++        self.W += 1.0
++
+     def estimates(self):
+-        return (self.S + 0.5 * self.prior_w) / (self.W + self.prior_w)
++        return (self.S + self.d0 * self.prior_w) / (self.W + self.prior_w)
+ 
+     def update(self):
+         if self.r == 1:
+@@ -62,5 +73,6 @@ class PathAutomaton:
+         uB[B] = 1.0 / len(B)
+         self.p = (1.0 - self.a) * self.p + self.a * uB
+         self.p /= self.p.sum()
++        self._pe = None
+         self.S *= self.forget
+         self.W *= self.forget
+diff --git a/larm/paths.py b/larm/paths.py
+index 2a7477c..e3931f4 100644
+--- a/larm/paths.py
++++ b/larm/paths.py
+@@ -5,6 +5,8 @@ increasing cost (Yen's algorithm through networkx.shortest_simple_paths), the
+ set of equal-cost shortest paths used by ECMP, and the path cost used to
+ measure stretch.
+ """
++import random
++import zlib
+ from itertools import islice
+ 
+ import networkx as nx
+@@ -22,19 +24,169 @@ def ecmp_paths(G, s, d, weight="weight", cap=16):
+     return [list(p) for p in islice(nx.all_shortest_paths(G, s, d, weight=weight), cap)]
+ 
+ 
++def _tie_weight(G, od, weight="weight", scale=1e-6):
++    """Edge weights perturbed by a tiny pair-specific amount, so that paths of
++    equal cost come out in a random (but reproducible) order for this pair while
++    paths of different cost keep their order."""
++    rng = random.Random(zlib.crc32(repr(od).encode()))
++    xi = {e: rng.random() for e in sorted(G.edges(), key=repr)}
++    return lambda u, v, d: d[weight] * (1.0 + scale * xi[(u, v)])
++
++
++def node_protecting(G, s, d, k, max_stretch=None, prio=None, weight="weight"):
++    """Candidate set with node protection and random ties (revision).
++
++    Start from a shortest path (equal-cost ties broken at random for this pair).
++    Then, for the transit switches of that path in decreasing order of priority
++    (here: the share of demand that crosses them under shortest-path routing),
++    add the shortest path that avoids the switch, unless a chosen candidate
++    already avoids it, as long as the path stays within the stretch bound. Fill
++    the remaining slots with Yen's paths (same random ties). Returns the
++    candidates in order of cost."""
++    wf = _tie_weight(G, (s, d), weight)
++    p1 = list(nx.shortest_path(G, s, d, weight=wf))
++    base = path_cost(G, p1, weight)
++    bound = None if max_stretch is None else max_stretch * base
++    chosen = [p1]
++    prio = prio or {}
++    transit = sorted(p1[1:-1], key=lambda n: (-prio.get(n, 0.0), repr(n)))
++    for t in transit:
++        if len(chosen) >= k:
++            break
++        if any(t not in p for p in chosen):
++            continue
++        H = nx.restricted_view(G, [t], [])
++        try:
++            p = list(nx.shortest_path(H, s, d, weight=wf))
++        except nx.NetworkXNoPath:
++            continue
++        if (bound is None or path_cost(G, p, weight) <= bound) and p not in chosen:
++            chosen.append(p)
++    if len(chosen) < k:
++        for p in nx.shortest_simple_paths(G, s, d, weight=wf):
++            p = list(p)
++            if bound is not None and path_cost(G, p, weight) > bound:
++                break
++            if p not in chosen:
++                chosen.append(p)
++            if len(chosen) >= k:
++                break
++    return sorted(chosen, key=lambda p: path_cost(G, p, weight))
++
++
++def diverse(G, s, d, k, max_stretch=None, prio=None, weight="weight"):
++    """Diverse candidate set (revision): node-disjoint paths first, then node
++    protection, then Yen's paths, all with random ties for the pair.
++
++    1. a shortest path P1;
++    2. while slots remain, the shortest path that shares no intermediate switch with
++       the paths chosen so far, if it is within the stretch bound;
++    3. for the transit switches of P1 in decreasing order of priority (the share of
++       demand that crosses them under shortest-path routing), the shortest path that
++       avoids the switch, unless a chosen path already does, within the bound;
++    4. Yen's paths for the remaining slots.
++    Returns the candidates in order of cost."""
++    wf = _tie_weight(G, (s, d), weight)
++    p1 = list(nx.shortest_path(G, s, d, weight=wf))
++    base = path_cost(G, p1, weight)
++    bound = None if max_stretch is None else max_stretch * base
++    ok = lambda p: bound is None or path_cost(G, p, weight) <= bound
++    chosen = [p1]
++    used = set(p1[1:-1])
++    while len(chosen) < k and used:
++        H = nx.restricted_view(G, list(used), [])
++        try:
++            p = list(nx.shortest_path(H, s, d, weight=wf))
++        except nx.NetworkXNoPath:
++            break
++        if not ok(p) or p in chosen:
++            break
++        chosen.append(p)
++        used |= set(p[1:-1])
++    prio = prio or {}
++    for t in sorted(p1[1:-1], key=lambda n: (-prio.get(n, 0.0), repr(n))):
++        if len(chosen) >= k:
++            break
++        if any(t not in p for p in chosen):
++            continue
++        H = nx.restricted_view(G, [t], [])
++        try:
++            p = list(nx.shortest_path(H, s, d, weight=wf))
++        except nx.NetworkXNoPath:
++            continue
++        if ok(p) and p not in chosen:
++            chosen.append(p)
++    if len(chosen) < k:
++        for p in nx.shortest_simple_paths(G, s, d, weight=wf):
++            p = list(p)
++            if not ok(p):
++                break
++            if p not in chosen:
++                chosen.append(p)
++            if len(chosen) >= k:
++                break
++    return sorted(chosen, key=lambda p: path_cost(G, p, weight))
++
++
++def random_ties(G, s, d, k, max_stretch=None, weight="weight"):
++    """Yen's k shortest paths with equal-cost ties broken at random for the pair."""
++    wf = _tie_weight(G, (s, d), weight)
++    out = []
++    base = None
++    for p in nx.shortest_simple_paths(G, s, d, weight=wf):
++        p = list(p)
++        c = path_cost(G, p, weight)
++        base = c if base is None else base
++        if max_stretch is not None and c > max_stretch * base:
++            break
++        out.append(p)
++        if len(out) >= k:
++            break
++    return sorted(out, key=lambda p: path_cost(G, p, weight))
++
++
++def sp_shares(G, ods, lam, weight="weight"):
++    """Share of the demand that crosses each switch under shortest-path routing,
++    equal-cost ties split evenly."""
++    S = {n: 0.0 for n in G.nodes()}
++    tot = sum(lam[od] for od in ods) or 1.0
++    for od in ods:
++        eq = ecmp_paths(G, od[0], od[1], weight)
++        for p in eq:
++            for n in p:
++                S[n] += lam[od] / tot / len(eq)
++    return S
++
++
+ class PathTable:
+-    """Precomputed routing state for every OD pair in the demand matrix."""
++    """Precomputed routing state for every OD pair in the demand matrix.
++
++    mode "yen" (default): Yen's k shortest paths, ties broken deterministically.
++    mode "ties": Yen's paths with equal-cost ties broken at random per pair.
++    mode "np": node-protecting candidates with random ties (see node_protecting);
++    mode "div": node-disjoint paths first, then node protection, then Yen's paths,
++    with random ties (see diverse). "np" and "div" need the demand (lam) to rank
++    transit switches."""
+ 
+-    def __init__(self, G, ods, k=4, weight="weight", max_stretch=None):
++    def __init__(self, G, ods, k=4, weight="weight", max_stretch=None, mode="yen", lam=None):
+         self.G = G
+         self.k = k
++        self.mode = mode
+         self.cand = {}
+         self.ecmp = {}
+         self.sp_cost = {}
+         self.cost = {}
++        prio = sp_shares(G, ods, lam, weight) if mode in ("np", "div") else None
+         for od in ods:
+             s, d = od
+-            cands = k_shortest(G, s, d, k, weight)
++            if mode == "div":
++                cands = diverse(G, s, d, k, max_stretch, prio, weight)
++            elif mode == "np":
++                cands = node_protecting(G, s, d, k, max_stretch, prio, weight)
++            elif mode == "ties":
++                cands = random_ties(G, s, d, k, max_stretch, weight)
++            else:
++                cands = k_shortest(G, s, d, k, weight)
+             base = path_cost(G, cands[0], weight)
+             if max_stretch is not None:
+                 cands = [p for p in cands if path_cost(G, p, weight) <= max_stretch * base] or cands[:1]
+diff --git a/larm/sim.py b/larm/sim.py
+index af50e00..5162420 100644
+--- a/larm/sim.py
++++ b/larm/sim.py
+@@ -33,6 +33,46 @@ class Policy:
+     ECMP = "ecmp"      # equal-cost multipath, hashed per flow
+     URM = "urm"        # uniform route mutation (MTD without learning)
+     LARM = "larm"      # learning-automata route mutation (this work)
++    # Baselines added in revision. They use the same candidate paths and the same
++    # occupancy signal as LA-RM, but no learning:
++    GREEDY = "greedy"  # occupancy-aware routing in the style of STAR/DIFF: each new flow
++                       # takes the candidate with the best score 1 - max occupancy
++                       # - beta*(stretch-1) on the *current* tables (no full switch if
++                       # possible); deterministic up to random tie-breaking
++    SPR = "sp_retry"   # shortest path with retry: if the shortest path crosses a full
++                       # switch, take the cheapest candidate that does not
++    LARMR = "larm_retry"  # LA-RM with retry: a draw that crosses a full switch is
++                          # credited 0 and the flow is re-drawn among the candidates
++                          # that avoid full switches (from the mixed vector)
++    GREEDY_POLL = "greedy_poll"  # greedy routing on the occupancy polled once per epoch
++                                 # (the snapshot LA-RM learns from) instead of live
++                                 # counts; a flow sent into a switch that filled since
++                                 # the poll is lost
++
++    # Revised automaton (fourth revision round). Once per epoch it is credited for
++    # every candidate of every pair with the reward of Eq. (2) at the polled
++    # occupancy, instead of only for the paths its flows were drawn on, and its
++    # learning rate is 0.4 (chosen on development seeds, experiments/dev_full.py).
++    LARM2 = "larm2"          # with retry, as in larm_retry
++    LARM2_NR = "larm2_nr"    # without retry, as in larm
++
++    LEARNING = ("larm", "larm_retry")
++
++
++_PT_CACHE = {}
++
++
++def _path_table(G, ods, lam, k, max_stretch, mode):
++    """Candidate paths depend only on the graph, the OD pairs, k, the stretch bound,
++    the construction mode and (for node-protecting sets) the relative demand, so
++    they are computed once per process and reused across runs."""
++    tot = sum(lam.values()) or 1.0
++    key = (id(G), k, max_stretch, mode,
++           tuple((od, round(lam[od] / tot, 12)) for od in ods) if mode in ("np", "div") else tuple(ods))
++    pt = _PT_CACHE.get(key)
++    if pt is None:
++        pt = _PT_CACHE[key] = PathTable(G, ods, k=k, max_stretch=max_stretch, mode=mode, lam=lam)
++    return pt
+ 
+ 
+ class Sim:
+@@ -41,8 +81,17 @@ class Sim:
+                  dur_sigma=0.6, stretch_pen=0.3, max_stretch=None,
+                  attacker=None, atk_rules=0, seed=0, la_kw=None, reward_mode="load",
+                  evict=False, smart_m=3, atk_reinstall=False, warmup=20.0,
+-                 retarget=None, atk_first=True):
++                 retarget=None, atk_first=True, cand_mode="yen", atk_cands=None, la_full=False):
++        self.policy_name = policy
++        if policy in (Policy.LARM2, Policy.LARM2_NR):
++            la_full = True
++            la_kw = dict({"a": 0.4}, **(la_kw or {}))
++            policy = Policy.LARMR if policy == Policy.LARM2 else Policy.LARM
+         self.reward_mode = reward_mode
++        # la_full: the automata are credited once per epoch for every candidate of
++        # every pair, with the reward of Eq. (2) at the polled occupancy, instead of
++        # only for the paths that the epoch's flows were drawn on (revision)
++        self.la_full = la_full
+         self.atk_first = atk_first      # adversary tops up before the epoch's benign arrivals
+         self.evict = evict              # single-switch detect-and-evict baseline
+         self.smart_m = smart_m          # targets held by the smart (multi-target) adversary
+@@ -70,17 +119,24 @@ class Sim:
+         tot = sum(dem.values())
+         # per-OD benign flow arrival rate (flows/s), scaled to target load
+         self.lam = {od: lam_scale * dem[od] / tot for od in self.ods}
+-        self.pt = PathTable(G, self.ods, k=k, max_stretch=max_stretch)
++        self.pt = _path_table(G, self.ods, self.lam, k, max_stretch, cand_mode)
++        # the adversary places its flows on the defender's candidates (default) or,
++        # with atk_cands=(k, mode), on a fixed reference table, so that comparisons
++        # of candidate constructions can hold the attack's own paths fixed
++        self.pt_atk = self.pt if atk_cands is None else _path_table(
++            G, self.ods, self.lam, atk_cands[0], max_stretch, atk_cands[1])
+         self.cap = cap if cap is not None else {n: 100 for n in self.nodes}
+         if isinstance(self.cap, int):
+             self.cap = {n: self.cap for n in self.nodes}
+         # learning automaton per OD pair (LARM only)
+         la_kw = la_kw or {}
+         self.auto = {}
+-        if policy == Policy.LARM:
++        if policy in Policy.LEARNING:
+             for od in self.ods:
+                 r = len(self.pt.cand[od])
+                 self.auto[od] = PathAutomaton(r, rng=self.rng_route, **la_kw)
++        if self.auto and self.la_full:
++            self._prep_full()
+         # ECMP hash seed per OD; shortest path: one equal-cost path per OD, at random
+         self.hash0 = {od: int(self.rng_route.integers(1 << 30)) for od in self.ods}
+         self.sp_path = {od: self.pt.ecmp[od][int(self.rng_route.integers(len(self.pt.ecmp[od])))]
+@@ -100,12 +156,44 @@ class Sim:
+         self.m = {"peak_occ": 0.0, "sum_occ": 0.0, "n_epoch": 0,
+                   "installs": 0, "benign_installs": 0, "stretch_sum": 0.0,
+                   "stretch_n": 0, "benign_lost": 0, "benign_offered": 0,
+-                  "benign_evicted": 0}
++                  "benign_evicted": 0, "stretch_adm_sum": 0.0, "stretch_adm_n": 0}
++        self._poll = {n: 0 for n in self.nodes}   # occupancy at the last poll (greedy_poll)
++        self.ol_trace = []     # (offered, lost) benign flows per epoch (warm-up included)
+         self.trace = []   # busiest-switch occupancy per epoch (warm-up included)
+         self.watch_od = None   # set to an OD pair to record its automaton's p each epoch
+         self.p_trace = []
+         self.adm_trace = []    # per-epoch benign admission rate (warm-up included)
+         self.targets = []      # adversary target(s) per epoch, for diagnostics
++        self.nfull_trace = []  # full switches at the end of each measured epoch, for diagnostics
++
++    # ---- all-candidate feedback (la_full) ---------------------------------
++    def _prep_full(self):
++        """Index arrays for scoring every candidate of every pair in one pass."""
++        idx = {n: j for j, n in enumerate(self.nodes)}
++        pad = len(self.nodes)                      # extra slot with occupancy 0
++        kmax = max(len(self.pt.cand[od]) for od in self.ods)
++        lmax = max(len(p) for od in self.ods for p in self.pt.cand[od])
++        self._fp = np.full((len(self.ods), kmax, lmax), pad, dtype=np.int64)
++        self._fpen = np.zeros((len(self.ods), kmax))
++        self._fn = np.array([len(self.pt.cand[od]) for od in self.ods])
++        for a, od in enumerate(self.ods):
++            for i, p in enumerate(self.pt.cand[od]):
++                self._fp[a, i, :len(p)] = [idx[n] for n in p]
++                self._fpen[a, i] = self.stretch_pen * (self.pt.stretch(od, p) - 1.0)
++        self._fcap = np.array([self.cap[n] for n in self.nodes], dtype=float)
++
++    def _credit_full(self):
++        """Credit every candidate of every pair with the reward of Eq. (2) at the
++        occupancy read now, at the end of the epoch; a candidate with a full switch
++        gets 0, as a blocked flow does."""
++        occ = np.zeros(len(self.nodes) + 1)
++        occ[:-1] = np.array([len(self.table[n]) for n in self.nodes]) / self._fcap
++        hot = occ[self._fp].max(axis=2)
++        rew = np.maximum(0.0, 1.0 - hot - self._fpen)
++        for a, od in enumerate(self.ods):
++            r = self._fn[a]
++            if r > 1:
++                self.auto[od].credit_all(rew[a, :r])
+ 
+     # ---- routing -------------------------------------------------------
+     def _choose_path(self, od):
+@@ -122,6 +210,50 @@ class Sim:
+         if self.policy == Policy.LARM:
+             i = self.auto[od].choose()
+             return i, cands[i]
++        if self.policy in (Policy.GREEDY, Policy.GREEDY_POLL):
++            # score every candidate on the current tables (greedy) or on the last
++            # poll (greedy_poll); a candidate crossing a full switch is never
++            # preferred to one that does not
++            if self.policy == Policy.GREEDY:
++                cnt = lambda n: len(self.table[n])
++            else:
++                cnt = self._poll.__getitem__
++            best, bi = None, []
++            for i, p in enumerate(cands):
++                if any(cnt(n) >= self.cap[n] for n in p):
++                    sc = -1e9
++                else:
++                    hot = max(cnt(n) / self.cap[n] for n in p)
++                    sc = 1.0 - hot - self.stretch_pen * (self.pt.stretch(od, p) - 1.0)
++                if best is None or sc > best + 1e-12:
++                    best, bi = sc, [i]
++                elif abs(sc - best) <= 1e-12:
++                    bi.append(i)
++            i = bi[int(self.rng_route.integers(len(bi)))] if len(bi) > 1 else bi[0]
++            return i, cands[i]
++        if self.policy == Policy.SPR:
++            if not self._full(self.sp_path[od]):
++                return 0, self.sp_path[od]
++            for i, p in enumerate(cands):      # candidates are in order of cost
++                if not self._full(p):
++                    return i, p
++            return 0, self.sp_path[od]
++        if self.policy == Policy.LARMR:
++            a = self.auto[od]
++            i = a.choose()
++            if not self._full(cands[i]):
++                return i, cands[i]
++            self._retry_fail = (i, cands[i])   # credited 0 at the end of the epoch
++            ok = [j for j in range(len(cands)) if j != i and not self._full(cands[j])]
++            if not ok:
++                return i, cands[i]
++            pe = a.p_eff()[ok]
++            pe = pe / pe.sum()
++            j = ok[int(self.rng_route.choice(len(ok), p=pe))]
++            return j, cands[j]
++
++    def _full(self, path):
++        return any(len(self.table[n]) >= self.cap[n] for n in path)
+ 
+     def _install(self, path, expiry, benign=True, count=True):
+         """Try to install one rule per switch on path; fail if any switch full.
+@@ -223,7 +355,7 @@ class Sim:
+         return [(self._tgt, self.atk_rules)]
+ 
+     def _attack_path(self, od, tgt, aware):
+-        cands = self.pt.cand[od]
++        cands = self.pt_atk.cand[od]
+         if not aware and tgt in cands[0]:
+             return cands[0]
+         for p in cands:
+@@ -310,7 +442,11 @@ class Sim:
+                 nnew = int(self.rng.poisson(self.lam[od] * dt))
+                 for _ in range(nnew):
+                     dur = float(self.rng.lognormal(np.log(self.dur_median), self.dur_sigma))
++                    self._retry_fail = None
+                     i, path = self._choose_path(od)
++                    if self._retry_fail is not None and self.policy in Policy.LEARNING:
++                        # the first draw met a full switch: it earns 0, like a block
++                        pend.setdefault(od, []).append((self._retry_fail[0], self._retry_fail[1], False))
+                     for n in path:
+                         self._dem[n] += 1
+                     ok = self._install(path, t + dur + self.idle, benign=True, count=measuring)
+@@ -322,7 +458,10 @@ class Sim:
+                         st = self.pt.stretch(od, path)
+                         self.m["stretch_sum"] += st
+                         self.m["stretch_n"] += 1
+-                    if self.policy == Policy.LARM:
++                        if ok:
++                            self.m["stretch_adm_sum"] += st
++                            self.m["stretch_adm_n"] += 1
++                    if self.policy in Policy.LEARNING:
+                         pend.setdefault(od, []).append((i, path, ok))
+             if measuring and not self.atk_first:
+                 self._adversary_refresh(t)
+@@ -330,14 +469,25 @@ class Sim:
+             occ = max(len(self.table[n]) / self.cap[n] for n in self.nodes)
+             self.trace.append(occ)
+             self.adm_trace.append(1.0 - lost / off if off else 1.0)
++            self.ol_trace.append((off, lost))
++            if self.policy == Policy.GREEDY_POLL:
++                # the once-per-epoch poll, at the same point where LA-RM reads occupancy
++                self._poll = {n: len(self.table[n]) for n in self.nodes}
+             if measuring:
++                self.nfull_trace.append(sum(1 for n in self.nodes if len(self.table[n]) >= self.cap[n]))
+                 self.m["peak_occ"] = max(self.m["peak_occ"], occ)
+                 self.m["sum_occ"] += occ
+                 self.m["n_epoch"] += 1
+             # 5. learning: reward is path-local so paths are distinguishable.
+             # A blocked flow earns 0; an admitted one earns
+             # 1 - (busiest switch on its path) - stretch penalty.
+-            if self.policy == Policy.LARM:
++            if self.policy in Policy.LEARNING and self.la_full:
++                self._credit_full()
++                for od in self.ods:
++                    self.auto[od].update()
++                if self.watch_od is not None and self.watch_od in self.auto:
++                    self.p_trace.append(self.auto[self.watch_od].p.copy())
++            elif self.policy in Policy.LEARNING:
+                 load = {n: len(self.table[n]) / self.cap[n] for n in self.nodes}
+                 for od, choices in pend.items():
+                     for i, path, ok in choices:
+@@ -362,10 +512,11 @@ class Sim:
+         ne = max(1, m["n_epoch"])
+         span = max(self.epoch, self.horizon - self.warmup)
+         return {
+-            "policy": self.policy,
++            "policy": self.policy_name,
+             "peak_occ": round(m["peak_occ"], 4),
+             "sustained_occ": round(m["sum_occ"] / ne, 4),
+             "mean_stretch": round(m["stretch_sum"] / max(1, m["stretch_n"]), 4),
++            "mean_stretch_admitted": round(m["stretch_adm_sum"] / max(1, m["stretch_adm_n"]), 4),
+             "installs_per_s": round(m["installs"] / span, 2),
+             "benign_lost": m["benign_lost"],
+             "benign_offered": m["benign_offered"],
+diff --git a/testbed/net.py b/testbed/net.py
+index c748a69..1556007 100644
+--- a/testbed/net.py
++++ b/testbed/net.py
+@@ -74,15 +74,18 @@ def main():
+     ap.add_argument("--adv_dst", type=int, default=5, help="adversary destination host (edge switch id)")
+     ap.add_argument("--adv_n", type=int, default=90, help="long-lived adversary flows")
+     ap.add_argument("--adv_port", type=int, default=9999, help="UDP port the controller treats as adversary")
++    ap.add_argument("--k", type=int, default=3, help="candidate paths per pair")
++    ap.add_argument("--count", default="poll", choices=["poll", "event"],
++                    help="how the controller keeps its rule counts (see rm_controller.py)")
+     ap.add_argument("--out", required=True)
+     args = ap.parse_args()
+     setLogLevel("warning")
+ 
+     net, G, sw, hosts, host_edge, host_port, ports = build(args.topo)
+     log = os.path.abspath(args.out + ".occ")
+-    cfg = {"policy": args.policy, "topo": args.topo, "seed": args.seed, "k": 3, "idle": args.idle,
++    cfg = {"policy": args.policy, "topo": args.topo, "seed": args.seed, "k": args.k, "idle": args.idle,
+            "epoch": 1.0, "cap": args.cap, "max_stretch": 2.5, "log": log,
+-           "adv_port": args.adv_port,
++           "adv_port": args.adv_port, "count": args.count,
+            "host_edge": {str(k): v for k, v in host_edge.items()},
+            "host_port": {str(k): v for k, v in host_port.items()},
+            "ports": {f"{a}-{b}": p for (a, b), p in ports.items()}}
+@@ -156,7 +159,7 @@ def _adv_path(args):
+     from larm.paths import PathTable
+     G = TOPOS[args.topo]()
+     od = (args.adv_src, args.adv_dst)
+-    pt = PathTable(G, [od], k=3, max_stretch=2.5)
++    pt = PathTable(G, [od], k=args.k, max_stretch=2.5)
+     return list(pt.cand[od][0])
+ 
+ 
+@@ -203,7 +206,7 @@ def summarize(occ, args, t_traffic=None):
+     late = [r for r in fl if t_traffic is not None and r[0] >= t_traffic + 0.25 * args.dur]
+     early = [r for r in fl if t_traffic is not None and r[0] < t_traffic + 0.25 * args.dur]
+     return {"policy": args.policy, "topo": args.topo, "seed": args.seed,
+-            "cap": args.cap, "attack": bool(args.attack),
++            "k": args.k, "cap": args.cap, "attack": bool(args.attack),
+             "adv_n": args.adv_n if args.attack else 0, "dur": args.dur,
+             "peak_occ": round(peak, 4),
+             "sustained_occ": round(sust, 4), "epochs": len(series),
+diff --git a/testbed/rm_controller.py b/testbed/rm_controller.py
+index 2995a4c..ed880a8 100644
+--- a/testbed/rm_controller.py
++++ b/testbed/rm_controller.py
+@@ -13,6 +13,33 @@ timeout. The path is chosen by the configured policy:
+         whose reward is 1 - (busiest switch on the path), so it learns to
+         route around whichever switch is filling up (this work)
+ 
++Occupancy-aware policies added in revision (same candidates, no learning except
++larm_retry). They use the controller's own count of live rules per switch, the
++same count that admission control checks:
++
++  greedy      the candidate with the best score 1 - (busiest switch on the
++              path) - 0.3*(stretch-1) on the current counts, among candidates
++              without a full switch; ties broken at random
++  sp_retry    the shortest path unless it crosses a full switch, else the
++              cheapest candidate that does not
++  larm_retry  as larm, but a draw that crosses a full switch is credited 0 and
++              the flow is drawn again among the candidates without a full switch
++
++Revised automaton (fourth revision round):
++
++  larm2       as larm_retry, but at every completed poll the automaton of every
++              pair is credited for each of its candidates with the reward at the
++              polled occupancy (not only for the paths its flows were drawn on),
++              and the learning rate is 0.4
++  larm2_nr    the same without retry
++
++Rule counts ("count" in the configuration). "poll" (default, as in the earlier
++series): the controller adds one to the count of every switch of a path except the
++egress switch when it installs the path, and replaces every count by the number of
++entries in the flow statistics once per epoch. "event": the count of every switch
++of the path, the egress included, is raised at the install and lowered by each
++FlowRemoved message; the poll then only feeds the occupancy log and the rewards.
++
+ An epoch thread polls per-switch flow statistics, records occupancy, and (for
+ larm) credits and updates the automata. The controller never reads any host's
+ role or address beyond what it needs to forward; occupancy is the only signal.
+@@ -31,6 +58,7 @@ import sys
+ import time
+ import zlib
+ 
++import numpy as np
+ from ryu.base import app_manager
+ from ryu.controller import ofp_event
+ from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER, set_ev_cls
+@@ -43,6 +71,10 @@ from larm.automaton import PathAutomaton
+ from larm.paths import PathTable
+ from testbed.topo import TOPOS
+ 
++LEARNING = ("larm", "larm_retry", "larm2", "larm2_nr")
++FULL = ("larm2", "larm2_nr")        # automata credited for every candidate at each poll
++RETRY = ("larm_retry", "larm2")     # learning policies that draw again on a full switch
++
+ 
+ class RouteMutation(app_manager.RyuApp):
+     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
+@@ -63,8 +95,13 @@ class RouteMutation(app_manager.RyuApp):
+         edges = sorted(set(self.host_edge.values()))
+         self.ods = [(a, b) for a in edges for b in edges if a != b]
+         self.pt = PathTable(self.G, self.ods, k=self.k, max_stretch=self.max_stretch)
+-        self.auto = {od: PathAutomaton(len(self.pt.cand[od])) for od in self.ods} \
+-            if self.policy == "larm" else {}
++        la_kw = {"a": 0.4} if self.policy in FULL else {}
++        self.auto = {od: PathAutomaton(len(self.pt.cand[od]), **la_kw) for od in self.ods} \
++            if self.policy in LEARNING else {}
++        self.count_mode = cfg.get("count", "poll")
++        self.count_gap = []     # event mode: largest |event count - polled count| per poll round
++        self._retry_fail = None
++        self._tie = random.Random(cfg.get("seed", 0) + 7)
+         tie = random.Random(cfg.get("seed", 0))
+         self.sp_path = {od: self.pt.ecmp[od][tie.randrange(len(self.pt.ecmp[od]))] for od in self.ods}
+         self.dp = {}            # dpid -> datapath
+@@ -155,11 +192,15 @@ class RouteMutation(app_manager.RyuApp):
+         if adversary:
+             idx, path = 0, self.pt.cand[od][0]   # the adversary routes on the shortest path
+         else:
++            self._retry_fail = None
+             idx, path = self._choose(od, key)
+             self.offered += 1
++            if self._retry_fail is not None and self.policy in LEARNING:
++                # the first draw met a full switch: credit it 0, like a blocked flow
++                self.pending.append((od, self._retry_fail[0], self._retry_fail[1], False))
+         # admission control: drop the flow if any switch on the path is at capacity
+         blocked = any(self.live.get(n, 0) >= self.cap for n in path)
+-        if not adversary and self.policy == "larm":
++        if not adversary and self.policy in LEARNING:
+             # credit the automaton for every benign request: a blocked path is the
+             # signal to route elsewhere (reward 0), an admitted one is rewarded
+             # by how clear its busiest switch is.
+@@ -198,6 +239,8 @@ class RouteMutation(app_manager.RyuApp):
+             self.installed[a].add(cookie)
+             self.live[a] = self.live.get(a, 0) + 1   # optimistic; reconciled from stats each epoch
+         self._install_flow(egr, flow, self.host_port[egr], cookie)
++        if self.count_mode == "event":
++            self.live[egr] = self.live.get(egr, 0) + 1
+         return cookie
+ 
+     def _install_flow(self, dpid, flow, out, cookie=None):
+@@ -223,9 +266,41 @@ class RouteMutation(app_manager.RyuApp):
+             import random
+             i = random.randrange(len(cands))
+             return i, cands[i]
+-        i = self.auto[od].choose()
++        if self.policy == "greedy":
++            best, bi = None, []
++            for i, p in enumerate(cands):
++                if self._full(p):
++                    sc = -1e9
++                else:
++                    hot = max(self.live.get(n, 0) / self.cap for n in p)
++                    sc = 1.0 - hot - 0.3 * (self.pt.stretch(od, p) - 1.0)
++                if best is None or sc > best + 1e-12:
++                    best, bi = sc, [i]
++                elif abs(sc - best) <= 1e-12:
++                    bi.append(i)
++            i = bi[self._tie.randrange(len(bi))]
++            return i, cands[i]
++        if self.policy == "sp_retry":
++            if not self._full(self.sp_path[od]):
++                return 0, self.sp_path[od]
++            for i, p in enumerate(cands):      # candidates are in order of cost
++                if not self._full(p):
++                    return i, p
++            return 0, self.sp_path[od]
++        a = self.auto[od]
++        i = a.choose()
++        if self.policy in RETRY and self._full(cands[i]):
++            ok = [j for j in range(len(cands)) if j != i and not self._full(cands[j])]
++            if ok:
++                self._retry_fail = (i, cands[i])
++                pe = [float(a.p_eff()[j]) for j in ok]
++                j = self._tie.choices(ok, weights=pe)[0]
++                return j, cands[j]
+         return i, cands[i]
+ 
++    def _full(self, path):
++        return any(self.live.get(n, 0) >= self.cap for n in path)
++
+     # ---- helpers --------------------------------------------------------
+     def _host_of_mac(self, mac):
+         # MAC 00:00:00:00:00:HH encodes host id HH-1 (as IP 10.0.0.HH)
+@@ -248,7 +323,10 @@ class RouteMutation(app_manager.RyuApp):
+ 
+     @set_ev_cls(ofp_event.EventOFPFlowRemoved, MAIN_DISPATCHER)
+     def _removed(self, ev):
+-        self.installed.get(self._node(ev.msg.datapath.id), set()).discard(ev.msg.cookie)
++        node = self._node(ev.msg.datapath.id)
++        if self.count_mode == "event" and ev.msg.cookie in self.installed.get(node, ()):
++            self.live[node] = max(0, self.live.get(node, 0) - 1)
++        self.installed.get(node, set()).discard(ev.msg.cookie)
+         # once a rule of a flow's path has expired, its next packet is a new setup
+         owner = self.cookie_key.pop(ev.msg.cookie, None)
+         if owner is not None:
+@@ -281,7 +359,13 @@ class RouteMutation(app_manager.RyuApp):
+     def _stats(self, ev):
+         node = self._node(ev.msg.datapath.id)
+         n = sum(1 for s in ev.msg.body if s.priority >= 10)
+-        self.live[node] = n                # authoritative count reconciles optimistic increments
++        self._gap = getattr(self, "_gap", 0)
++        if self.count_mode == "event":
++            # counts follow installs and FlowRemoved messages; the poll is not used
++            # for them, only compared with them
++            self._gap = max(self._gap, abs(self.live.get(node, 0) - n))
++        else:
++            self.live[node] = n            # authoritative count reconciles optimistic increments
+         self._occ = getattr(self, "_occ", {})
+         self._occ[node] = n / self.cap
+         # once we have all switches, log and (for larm) learn
+@@ -290,7 +374,20 @@ class RouteMutation(app_manager.RyuApp):
+             self.occ_log.append(occ)
+             self.t_log.append(round(time.time(), 3))
+             self._round_open = 0.0
+-            if self.policy == "larm" and self.pending:
++            self.count_gap.append(self._gap)
++            self._gap = 0
++            if self.policy in FULL:
++                # all-candidate feedback: every candidate of every pair is credited
++                # with the reward at the polled occupancy (0 if a switch is full)
++                for od, a in self.auto.items():
++                    cands = self.pt.cand[od]
++                    if len(cands) > 1:
++                        a.credit_all(np.array([max(0.0, 1.0 - max(occ.get(n, 0.0) for n in p)
++                                                   - 0.3 * (self.pt.stretch(od, p) - 1.0))
++                                               for p in cands]))
++                        a.update()
++                self.pending = []
++            elif self.policy in LEARNING and self.pending:
+                 load = occ
+                 for od, idx, path, admitted in self.pending:
+                     if not admitted:
+@@ -315,6 +412,7 @@ class RouteMutation(app_manager.RyuApp):
+                            "req_offered": self.offered, "req_admitted": self.admitted,
+                            "req_admission": self.admitted / self.offered if self.offered else 1.0,
+                            "n_other": getattr(self, "n_other", 0), "n_udp": getattr(self, "n_udp", 0),
++                           "count_mode": self.count_mode, "count_gap": self.count_gap,
+                            "flow_log": [[round(r["t0"], 2), r["p0"], r["first"]] for r in self.flows.values()]},
+                           open(self.logpath, "w"))
+             except OSError:
